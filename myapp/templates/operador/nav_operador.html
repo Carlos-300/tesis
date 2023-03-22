@@ -1,0 +1,33 @@
+{% load static %}
+
+
+
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src="{% static 'img/logo_salud.png' %}" alt="" id="logo_salud_icono"></a></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/mod_index/">Modificar Index</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/cursos_add/">Ingresar cursos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/lista_cursos_operador/">Lista de cursos</a>
+        </li>
+        
+      </ul>
+      </div>
+      <a class="nav-link active" aria-current="page" href="/index/"><img src="{% static 'img/salida.png' %}" width="40px"></a>
+    </div>
+  </div>
+</nav>
+ 
+
+
+{% block content %}
+{% endblock %}

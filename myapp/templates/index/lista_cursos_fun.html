@@ -1,41 +1,48 @@
 {% extends 'index/nav.html' %}
 {% load static %}
 {% block content %}
+
 <body>
-    <br>
-    <div class="container" style="margin-top: 120px; margin-left: 50px;">
-        <div class="row">
-          <div class="col">
-            <div id="menu">
-              <h6>Filtro de busqueda</h6>
-                Seleccionar departamento:
-                Fecha de corte:
-                Tipo de funcionarios:
-                
-            </div>
+  <br>
+  <div class="container" style="margin-top: 120px; margin-left: 50px;">
+    <div class="row">
+      <div class="col">
+        <div id="menu">
+          <h6>Filtro de busqueda</h6>
+          Seleccionar departamento:
+          Fecha de corte:
+          Tipo de funcionarios:
+
         </div>
-          <div class="col-sm-10 text-center">
-            <div>
-                <div class="container text-center">
-                  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
-                    <div class="col">
-                      <div class="card">
-                      <img src="..." class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                      </div>
-                    </div></div>
-                    <div class="col">Column</div>
-                    <div class="col">Column</div>
-                    <div class="col">Column</div>
+      </div>
+      <div class="col-sm-10 text-center">
+        <div>
+          <div class="container text-center">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+
+              {% for cursos in cursos %}
+              <div class="col">
+                <div class="card container">
+                  <img src="{{cursos.img_curso.url}}">
+                  <div class="card-body">
+                    <h5 class="card-title">{{cursos.nombre_curso}}</h5>
+                    <p class="card-text">{{cursos.descrip_corta_curso}}</p>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">Hospital: {{cursos.hospital_curso}}</li>
+                      <li class="list-group-item">Finaliza: {{cursos.time_end_curso}}</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Ver curso</a>
                   </div>
                 </div>
+              </div>
+              {% endfor %}
 
-
+            </div>
           </div>
+
+
         </div>
+      </div>
     </div>
 
 </body>

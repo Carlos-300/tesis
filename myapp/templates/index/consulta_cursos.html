@@ -1,0 +1,25 @@
+{% extends 'index/nav.html' %}
+{% load static %}
+
+{% block content %}
+
+<html>
+    <body>
+        <div class="container" style="margin-top: 300px;">
+            <form action="" method="POST">
+                <h2>Consultar el estado de mi cursos</h2>
+                <label for="">nombre </label>
+                <input type="text"><br>
+                <label for="">N° credencial</label>
+                <input type="number"><br>
+                <label for="">Numero telefono</label>
+                <input type="number"><br>
+                <label for="">Correo</label>
+                <input type="text"><br>
+                <button type="submit" class="btn btn-danger"> Enviar</button>
+            </form>
+        </div>
+    </body>
+</html>
+
+{% endblock content %}

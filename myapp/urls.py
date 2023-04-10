@@ -13,6 +13,7 @@ urlpatterns = [
     path('mod_index/',views.modificar_index),
     path('cursos_add/',views.ingresar_cursos),
     path('lista_cursos_operador/',views.lista_cursos_operador),
+    path('consultas_cursos/',views.form_consulta),
     #formularios post
     path('ingresar_cursos_form/',views.form_create_new_curso),
     path('ingresar_card_form/',views.form_create_new_card),

@@ -16,7 +16,7 @@
         <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button"
           role="tab" aria-controls="home-tab-pane" aria-selected="true">Cartas</button>
         <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#navPublic"
-          type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Carpeta</button>
+          type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Publicidad</button>
       </div>
     </nav>
 
@@ -70,7 +70,6 @@
                       <th scope="col">Nombre</th>
                       <th scope="col">Cargo</th>
                       <th scope="col">Descripción</th>
-                      <th scope="col">edit</th>
                       <th scope="col">delete</th>
 
                     </tr>
@@ -82,7 +81,6 @@
                       <td>{{perfil.nombre_card}}</td>
                       <td>{{perfil.cargo_card}}</td>
                       <td>{{perfil.descrip_card}}</td>
-                      <td><button class="btn btn-warning"><img src="{% static 'img/editar.png' %}" width="20px"></button></td>
                       <td>
                         <form action="/delete_card/" method="POST">
                           {% csrf_token %}
@@ -143,7 +141,6 @@
                       <th scope="col">#</th>
                       <th scope="col">Nombre</th>
                       <th scope="col">Descripcion</th>
-                      <th scope="col">edit</th>
                       <th scope="col">delete</th>
                     </tr>
                   </thead>
@@ -154,7 +151,6 @@
                         <th scope="row">{{public.id}}</th>
                         <td>{{public.nombre_pub}}</td>
                         <td>{{public.descrip_pub}}</td>
-                        <td> <button class="btn btn-warning"><img src="{% static 'img/editar.png' %}" width="20px"></button> </td>
                         <td>
                           <form action="/delete_public/" method="POST">
                             {% csrf_token %}

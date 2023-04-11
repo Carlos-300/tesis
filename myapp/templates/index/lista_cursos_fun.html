@@ -59,38 +59,38 @@
           </div>
           <div class="modal-body">
             <div class="container text-center ">
-              <div class="row">
+              <div class="row justify-content-center  align-items-center ">
                 <div class="col-md-1"></div>
                 <div class="col-md-6">
                   <div class="container text-center">
                     <h2>{{cursos.nombre_curso}}</h2>
                   <br>
                   <div class="row">
-                    <div class="col-4 text-start">Descripcion : </div>
-                    <div class="col-8 text-start">{{cursos.descrip_larga_curso}}</div>
+                    <div class="col-4 text-start"><h6>Descripcion :</h6></div>
+                    <div class="col-8 text-start"><p>{{cursos.descrip_larga_curso}}</p></div>
                   </div>
                   <div class="row ">
-                    <div class="col-4 text-start">Requisistos :</div>
-                    <div class="col-8 text-start">{{cursos.requisitos_curso}}</div>
+                    <div class="col-4 text-start"><h6>Requisistos :</h6></div>
+                    <div class="col-8 text-start"><p>{{cursos.requisitos_curso}}</p></div>
                   </div>
                   <div class="row ">  
-                    <div class="col-4 text-start" >Hospital :</div>
-                    <div class="col-8 text-start">{{cursos.hospital_curso}}</div>
+                    <div class="col-4 text-start" ><h6>Hospital :</h6></div>
+                    <div class="col-8 text-start"><p>{{cursos.hospital_curso}}</p></div>
                   </div>
                   <div class="row ">
-                    <div class="col-4 text-start">Servicio :</div>
-                    <div class="col-8 text-start">{{cursos.servicio_curso}}</div>
+                    <div class="col-4 text-start"><h6>Servicio :</h6></div>
+                    <div class="col-8 text-start"><p>{{cursos.servicio_curso}}</p></div>
                   </div>
                   <div class="row">
-                    <div class="col-4 text-start">Inicia :</div>
-                    <div class="col-8 text-start">{{cursos.time_start_curso}}</div>
+                    <div class="col-4 text-start"><h6>Inicia :</h6></div>
+                    <div class="col-8 text-start"><p>{{cursos.time_start_curso}}</p></div>
                   </div>
                   <div class="row">
-                    <div class="col-4 text-start ">Finaliza: </div>
-                    <div class="col-8 text-start">{{cursos.time_end_curso}}</div>
+                    <div class="col-4 text-start "><h6>Finaliza :</h6></div>
+                    <div class="col-8 text-start"><p>{{cursos.time_end_curso}}</p></div>
                   </div>
                   <div class="row">
-                    <div class="col-4 text-start">Personal Dirigido :</div>
+                    <div class="col-4 text-start"><h6>Personal Dirigido :</h6></div>
                     <div class="col-8 text-start">
                       {% for x in cursos.personal_cursos.split %}
                       <li>{{x}} </li>
@@ -101,7 +101,7 @@
                   <button><a href="{{cursos.form_carga_curso}}"></a></button>
                 </div>
                 </div>
-                <div class="col-md-5">
+                <div class="col-sm-5 ">
                   <img src="{{cursos.img_curso.url}}" width="350px">
                 </div>
               </div>

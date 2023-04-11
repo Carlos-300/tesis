@@ -134,7 +134,7 @@ def delete_objet_curso(request):
             instance = create_nuevo_curso.objects.get(id=id_curso)
             if os.path.isfile("myapp"+instance.img_curso.url) == True:
                 os.remove("myapp"+instance.img_curso.url)
-            if  os.path.isfile("myapp"+instance.form_carga_curso.url) == True:
+            if os.path.isfile("myapp"+instance.form_carga_curso.url) == True:
                 os.remove("myapp"+instance.form_carga_curso.url)
             instance.delete()
             return redirect("/lista_cursos_operador/")

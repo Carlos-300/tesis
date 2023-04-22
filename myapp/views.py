@@ -17,7 +17,8 @@ from django.conf import settings
 def vistageneral(request):
     perfil_card = create_nuevo_card.objects.all()
     publicidad = create_nuevo_publicacion.objects.all()
-    return render(request, 'index/index.html',{"perfil_card": perfil_card, "publicidad": publicidad})
+    cursos = create_nuevo_curso.objects.all()
+    return render(request, 'index/index.html',{"perfil_card": perfil_card,"lista_cursos": cursos, "publicidad": publicidad})
 
 
 def lista_cursos_funcionarios(request):
@@ -38,7 +39,12 @@ def login_operador(request):
 def modificar_index(request):
     perfil_card = create_nuevo_card.objects.all()
     publicidad = create_nuevo_publicacion.objects.all()
-    return render(request, 'operador/mod_index.html',{"perfil_card": perfil_card , "publicidad": publicidad})
+    cursos = create_nuevo_curso.objects.all()
+    for lista in cursos:
+        if lista != None:
+            return render(request, 'operador/mod_index.html',{"perfil_card": perfil_card , "publicidad": publicidad, "cursos":cursos })
+        
+    return render(request, 'operador/mod_index.html',{"perfil_card": perfil_card , "publicidad": publicidad, "cursos":cursos})
 
 
 def ingresar_cursos(request):
@@ -168,3 +174,10 @@ def delte_objet_public(request):
             return render(request, 'operador/mod_index.html',{"perfil_card": perfil_card , "publicidad": publicidad,'ventana_public_delete_f':True})
     else:
         return render(request, 'operador/mod_index.html',{"perfil_card": perfil_card , "publicidad": publicidad,'ventana_public_delete_x':True})
+
+
+
+def form_actualizar_curso(request):
+    if request.method == 'POST':
+        return
+    return

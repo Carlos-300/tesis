@@ -15,11 +15,11 @@
                     <div>
                         <label for="">Nombre del Curso:</label>
                         <input class="form-control form-control-sm" type="text" placeholder="Nombre"
-                            aria-label=".form-control-sm example" name="nombre_curso">
+                            aria-label=".form-control-sm example" name="nombre_curso" id="campo_nombre"  onchange="changeValue(this.value)">
                     </div>
                     <div>
                         <label for="">Imagenes:</label>
-                        <input class="form-control form-control-sm" id="formFileSm" type="file" name="img_curso">
+                        <input class="form-control form-control-sm" id="img_curso" type="file" name="img_curso">
                     </div>
                     <div>
                         <label for="">Formulario de postulación:</label>
@@ -31,7 +31,7 @@
                         <textarea class="form-control form-control-sm" type="text"
                             placeholder="Descripción máximo 260 caracteres" aria-label=".form-control-sm example"
                             name="descrip_corta_curso" id="campo_precentacion"
-                            onkeyup="changeValue(this.value)"></textarea>
+                            onchange="changeValue(this.value)"></textarea>
                     </div>
                     <div>
                         <label for="">Descripción completa:</label>
@@ -50,18 +50,30 @@
                     <div>
                         <label for="">Fecha de termino de postulación:</label>
                         <input class="form-control form-control-sm" id="formFileSm" type="date" name="time_end_curso"
-                            id="campo_end_time">
+                            id="time_end_curso" onchange="prueba(this)">
                     </div>
                     <div>
                         <label for="">Hospital:</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="Hospital"
-                            aria-label=".form-control-sm example" name="hospital_curso" id="campo_hospital"
-                            onkeyup="changeValue(this.value)">
+                            <select name="hospital_curso" id="campo_hospital" class="form-select" onchange="changeValue(this.value)">
+                                <option value="" selected>Open the select</option>
+                                <option value="H.G.G.B">H.G.G.B</option>
+                                <option value="Lota">Lota</option>
+                                <option value="CESFAM Dr. Victor Manuel Fernandez">CESFAM Dr. Victor Manuel Fernandez </option>
+                                <option value="Psiquiatría Leonor Mascayano">Psiquiatría Leonor Mascayano</option>
+                            </select>
                     </div>
                     <div>
                         <label for="">Servicios dirigidos:</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="Servicios dirigidos"
-                            aria-label=".form-control-sm example" name="servicio_curso">
+                            <select name="servicio_curso" id="" class="form-select">
+                                <option value="" selected>Open the select</option>
+                                <option value="">Anatomía Patológica</option>
+                                <option value="">Cirugia</option>
+                                <option value="">Consultorios</option>
+                                <option value="">Urologia</option>
+                                <option value="">Micribiologia</option>
+                                <option value="">odontologia</option>
+                                <option value="">Cardiologia</option>
+                            </select>
                     </div>
                     <br>
                     <div class="row">
@@ -110,20 +122,24 @@
             </div>
             <div class="col-sm-7 text-center">
                 <h4>Vista previa</h4>
-                <div>
-                    <div class="card card_curso_pre container">
-                        <img src="..." class="card-img-top" alt="...">
+
+                <div class="card_curso_pre container">
+
+                    <div class="card">
+                        <img id="mostrarImagen" class="card-img-top" src="{% static 'img/no_img.jpg' %}"  ></img>
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
+                            <h5 class="card-title" id="para_nombre" ></h5>
                             <p class="card-text" id="para_precentacion"></p>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">Hospital : <label id="para_hospital"> </li>
-                                <li class="list-group-item">Fecha termino: May 21, 2023<label id="para_end_time"> </li>
+                                <li class="list-group-item">Finaliza : <label id="para_end_time"> </li>
                             </ul>
                             <a href="#" class="btn btn-primary">Ver curso</a>
                         </div>
                     </div>
-                </div>
+
+               </div>
+
             </div>
         </div>
     </div>
@@ -143,13 +159,32 @@
         document.getElementById('para_precentacion').innerHTML = valor;
         var valor = document.getElementById('campo_hospital').value;
         document.getElementById('para_hospital').innerHTML = valor;
-
-        
+        var valor = document.getElementById('campo_nombre').value;
+        document.getElementById('para_nombre').innerHTML = valor;
         
         
     }
-    let fechaDevolucion = $("#campo_end_time").val();
-        console.log(fechaDevolucion);
+
+    function prueba(el)
+    {
+        document.getElementById('para_end_time').innerHTML = el.value;
+    }
+    const defaultFile = "{% static 'img/no_img.jpg' %}"
+
+   const file = document.getElementById('img_curso');
+   const img = document.getElementById('mostrarImagen');
+   file.addEventListener('change', e =>{
+    if(e.target.files[0]){
+        const reader = new FileReader( );
+        reader.onload= function(e){
+            img.src = e.target.result;
+        }
+        reader.readAsDataURL(e.target.files[0])
+    }else{
+        img.src = defaultFile
+    }
+   })
+
 </script>
 
 

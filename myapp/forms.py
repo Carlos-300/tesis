@@ -23,11 +23,11 @@ class CreateNewCursos(forms.ModelForm):
 
 
 
-class validar_delete_card(forms.ModelForm):
+class validar_delete_card(forms.Form):
     id_delete_card = forms.CharField()
 
-class validar_delete_cursos(forms.ModelForm):
+class validar_delete_cursos(forms.Form):
     id_delete_curso = forms.CharField()
 
-class validar_delete_public(forms.ModelForm):
+class validar_delete_public(forms.Form):
     id_delete_public = forms.CharField()

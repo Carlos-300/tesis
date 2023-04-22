@@ -21,6 +21,9 @@ urlpatterns = [
     path('delete_card/',views.delte_objet_card),
     path('delete_curso/',views.delete_objet_curso),
     path('delete_public/',views.delte_objet_public),
+    #pasar a cursos
+    
+
     
    
 ] 

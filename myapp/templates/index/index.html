@@ -28,18 +28,6 @@
                 </div>
               </div>
               {% endfor %}
-
-              {% for x in lista_cursos %}
-              <div class="carousel-item" data-bs-interval="5000">
-                <img src="{{x.img_curso.url}}" class="d-block w-100" width="800px" height="400px" onclick="prueba();">
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>{{x.nombre_curso}}</h5>
-                  <p>{{x.descrip_corta_curso}}
-                    {{x.id}}
-                  </p>
-                </div>
-              </div>
-              {% endfor %}
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>

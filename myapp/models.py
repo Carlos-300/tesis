@@ -13,10 +13,7 @@ class create_nuevo_curso(models.Model):
     time_end_curso = models.DateField() 
     servicio_curso = models.CharField(max_length=100)
     hospital_curso = models.CharField(max_length=100)
-    #personal 
     personal_cursos = models.CharField(max_length=80)
-
-
 
 class create_nuevo_card(models.Model):
     img_card =  models.ImageField(upload_to="img",null=True, blank=True)
@@ -29,3 +26,14 @@ class create_nuevo_publicacion(models.Model):
     nombre_pub = models.CharField(max_length=100)
     descrip_pub = models.CharField(max_length=100, default='SOME STRING')
 
+class create_new_consultas(models.Model):
+    nombre_completo = models.CharField(max_length=100)
+    credencial = models.CharField(max_length=100)
+    telefono = models.CharField(max_length=100)
+    Correo = models.CharField(max_length=100)
+
+class new_class_hospital(models.Model):
+    nombre_hospital = models.CharField(max_length=250)
+
+class new_class_servicio(models.Model):
+    nombre_sev = models.CharField(max_length=250)

@@ -5,19 +5,26 @@
 
 <html>
     <body>
-        <div class="container" style="margin-top: 300px;">
+        <div class="container" style="margin-top: 150px;">
+            <div class="container text-center">
+                <div class="row">
+                  <div class="col text-start">
             <form action="" method="POST">
-                <h2>Consultar el estado de mi cursos</h2>
-                <label for="">nombre </label>
-                <input type="text"><br>
-                <label for="">N° credencial</label>
-                <input type="number"><br>
-                <label for="">Numero telefono</label>
-                <input type="number"><br>
-                <label for="">Correo</label>
-                <input type="text"><br>
+                <h2>Consultar el estado de tus cursos</h2>
+                <label for="" class="form-label">Nombre Completo </label>
+                <input type="text" class="form-control">
+                <label for="" class="form-label">N° credencial</label>
+                <input type="number" class="form-control">
+                <label for="" class="form-label">Numero telefono</label>
+                <input type="number" class="form-control">
+                <label for="" class="form-label">Correo</label>
+                <input type="text" class="form-control">
                 <button type="submit" class="btn btn-danger"> Enviar</button>
             </form>
+        </div>
+        <div class="col">
+            <img src="{% static 'img/consultas.webp' %}" alt="">
+        </div>
         </div>
     </body>
 </html>

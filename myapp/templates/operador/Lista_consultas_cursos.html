@@ -6,34 +6,31 @@
 <body>
 
   <div class="container text-center">
-    <h3>Lista de cursos ingresados</h3>
+    <h3>Lista de Consultas </h3>
     <table class="table table-bordered border-primary">
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Descripción de precentación</th>
-          <th scope="col">Hospital</th>
-          <th scope="col" style="width: 150px;">Personal</th>
-          <th scope="col">Editar</th>
+          <th scope="col">Nombre Completo</th>
+          <th scope="col">N° credencial</th>
+          <th scope="col">Numero telefono</th>
+          <th scope="col">Correo</th>
+          <th scope="col">Respondido</th>
           <th scope="col">Eliminar</th>
-          <th scope="col">Activo</th>
+         
 
         </tr>
       </thead>
       <tbody class="table-group-divider">
         
-        {% for list_cursos in cursos %}
+        {% for list_consultas in consultas %}
         <tr>
-          <th scope="row">{{list_cursos.id}}</th>
-          <td>{{list_cursos.nombre_curso}}</td>
-          <td>{{list_cursos.descrip_corta_curso}}</td>
-          <td>{{list_cursos.hospital_curso}}</td>
-          <td>
-            {% for x in list_cursos.personal_cursos.split %}
-            <li>{{x}}</li>
-            {% endfor %}
-          </td>
+          <th scope="row">{{list_consultas.id}}</th>
+          <td>{{list_consultas.nombre_completo}}</td>
+          <td>{{list_consultas.credencial}}</td>
+          <td>{{list_consultas.telefono}}</td>
+          <td>{{list_consultas.Correo}}</td>
+           
           <td>
             <button type="button" class="btn btn-Warning" data-bs-toggle="modal" data-bs-target="#Modal_curos_{{list_cursos.id}}">
               <img src="{% static 'img/editar.png' %}" width="20px">
@@ -90,3 +87,4 @@
   </div>
 </div>
 {% endfor %}
+{% endblock content %}

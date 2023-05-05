@@ -170,23 +170,20 @@
                   <div class="tab-pane fade" id="nav-cursos" role="tabpanel" aria-labelledby="nav-cursos-tab"
                     tabindex="0">
                     <br>
-                    <form action="/ingresar_publi_form/" method="POST">
+                    <form action="/public_cursos/" method="POST">
                       {% csrf_token %}
                       <div class="input-group mb-3">
                         <span class="input-group-text"> Curso</span>
-                        <select name="select" class="form-select">
+                        <select name="select" class="form-select" onchange="prueba(this)">
                           <option selected>Open this select</option>
                           {% for curso in cursos %}
-                          <option value="{{curso.id}}">N°{{curso.id}} -- {{curso.nombre_curso}} </option>
+                          <option value="{{curso.id}}" >N°{{curso.id}} -- {{curso.nombre_curso}} </option>
                           {% endfor %}
-                          <input type="text" value="{{curso.img_curso.url}}" name="img_pub">
-                          <input type="text" value="{{curso.nombre_curso}}" name="nombre_pub">
-                          <input type="text" value="Finaliza el {{curso.time_end_curso}}" name="descrip_pub">
+                          <input type="hidden" value="0" name="id_curso_pub" id="id_curso_public">
                         </select>
                         
-
                       </div>
-                      <button type="submit" class="btn btn-danger">Enviar</button>
+                      <button type="submit" class="btn btn-warning">Enviar</button>
                     </form>
 
 
@@ -258,9 +255,17 @@
       bsTab.show();
     });
   </script>
+
+
+
   {% endif %}
 
+<script>
 
+function prueba(el) {
+  document.getElementById('id_curso_public').value = el.value;
+}
+</script>
 
 
 

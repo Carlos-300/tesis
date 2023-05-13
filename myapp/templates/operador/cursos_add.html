@@ -78,13 +78,12 @@
                                 <div>
                                     <label for="">Hospital:</label>
                                     <div class="input-group">
-
                                         <select name="hospital_curso" id="campo_hospital" class="form-select"
                                             onchange="changeValue(this.value)">
-                                            <option selected>Open the select</option>
+                                            <option selected disabled>Ver selecciones</option>
                                             {%for class_hosp in class_hospital %}
-                                                <option value="{{class_hosp.nombre_hospital}}">
-                                                    {{class_hosp.nombre_hospital}}</option>
+                                            <option value="{{class_hosp.nombre_hospital}}">
+                                                {{class_hosp.nombre_hospital}}</option>
                                             {% endfor %}
                                         </select>
                                         <button type="button" class="btn btn-warning" data-bs-toggle="modal"
@@ -98,14 +97,11 @@
                                     <div class="input-group">
 
                                         <select name="servicio_curso" id="servicio_curso" class="form-select">
-                                            <option value="" selected>Open the select</option>
-                                            <option value="Anatomía Patológica">Anatomía Patológica</option>
-                                            <option value="Cirugia">Cirugia</option>
-                                            <option value="Consultorios">Consultorios</option>
-                                            <option value="Urologia">Urologia</option>
-                                            <option value="Micribiologia">Micribiologia</option>
-                                            <option value="odontologia">odontologia</option>
-                                            <option value="Cardiologia">Cardiologia</option>
+                                            <option selected disabled>Ver selecciones</option>
+                                            {%for class_serv in class_serv %}
+                                            <option value="{{class_serv.nombre_sev}}">
+                                                {{class_serv.nombre_sev}}</option>
+                                            {% endfor %}
                                         </select>
                                         <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                                             data-bs-target="#add_servicio"><img src="{% static 'img/mas.png' %}"
@@ -277,7 +273,7 @@
                                 <br>
                                 <label for="" class="form-label">Selecion el Hospital para eliminar</label>
                                 <select name="id_delete_hospital" id="id_delete_hospital" class="form-select">
-                                    <option selected>Open the select</option>
+                                    <option selected disabled>Ver selecciones</option>
                                     {%for class_hosp in class_hospital %}
                                     <option value="{{class_hosp.id}}">
                                         {{class_hosp.nombre_hospital}}</option>
@@ -337,12 +333,15 @@
                     <div class="tab-pane fade" id="Eliminar2" role="tabpanel" aria-labelledby="nav-profile-tab"
                         tabindex="0">
                         <div class="container">
-                            <form action="" method="post"><br>
+                            <form action="/delete_servicio/" method="POST"><br>
                                 {%csrf_token %}
                                 <label for="" class="form-label">Selecion el Servicio para eliminar</label>
                                 <select name="servicio_curso" id="servicio_curso" class="form-select">
-                                    <option value="0" selected>Open the select</option>
-
+                                    <option selected disabled>Ver selecciones</option>
+                                    {%for class_serv in class_serv %}
+                                    <option value="{{class_serv.nombre_sev}}">
+                                        {{class_serv.nombre_sev}}</option>
+                                    {% endfor %}
 
                                 </select><br>
                                 <button class="btn btn-danger">Eliminar</button>

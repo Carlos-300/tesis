@@ -19,13 +19,14 @@
                   <p>Tel.:56-41-2723002 Red-Minsal.:413002</p>
                 </div>
               </div>
-              {% for publicidad in publicidad %}
+              {% for publicidad2 in publicidad %}
               <div class="carousel-item" data-bs-interval="5000">
-                <img src="{{publicidad.img_pub.url}}" class="d-block w-100" width="800px" height="400px" onclick="prueba();">
+                  <img src="{{publicidad2.img_pub.url}}" class="d-block w-100" width="800px" height="400px" onclick="prueba();">
                 <div class="carousel-caption d-none d-md-block">
-                  <h5>{{publicidad.nombre_pub}}</h5>
-                  <p>{{publicidad.descrip_pub}} </p>
+                  <h5 style="color: black;">{{publicidad2.nombre_pub}}</h5>
+                  <p>{{publicidad2.descrip_pub}} </p>
                 </div>
+                <label for="">{{publicidad2.img_pub.url}} </label>
               </div>
               {% endfor %}
             </div>
@@ -99,6 +100,7 @@
               <h5 class="card-title">{{perfil_card.nombre_card}} </h5>
               <p class="card-text">{{perfil_card.cargo_card}} </p>
               <p class="card-text">{{perfil_card.descrip_card}} </p>
+              <label for="">{{perfil_card.img_card.url}}</label>
             </div>
           </div>
         </div>

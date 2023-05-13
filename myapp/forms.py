@@ -36,8 +36,9 @@ class CreateNewConsulta(forms.ModelForm):
         model = create_new_consultas
         fields = '__all__'
 
-
-
+class CreateNewConsultaRespondido(forms.Form):
+     id_respuesta = forms.CharField()
+    
 class validar_delete_card(forms.Form):
     id_delete_card = forms.CharField()
 
@@ -49,13 +50,20 @@ class validar_delete_public(forms.Form):
 
 class validar_delete_hospital(forms.Form):
     id_delete_hospital = forms.CharField()
+
 class validar_delete_servicio(forms.Form):
     id_delete_servicio = forms.CharField()
+
+class validar_delete_consulta(forms.Form):
+    id_delete = forms.CharField()
     
 class validar_curso_publicar(forms.Form):
     id_curso_pub = forms.CharField()
 
+    
+
 class update_curso(forms.Form):
+    curso_actualizar = forms.CharField(max_length=100)
     nombre_curso = forms.CharField(max_length=100)
     descrip_corta_curso = forms.CharField(max_length=250)
     descrip_larga_curso = forms.CharField(max_length=600)
@@ -65,3 +73,14 @@ class update_curso(forms.Form):
     servicio_curso = forms.CharField(max_length=100)
     hospital_curso = forms.CharField(max_length=100) 
     personal_cursos = forms.CharField(max_length=80)
+
+class update_publicacion(forms.Form):
+    id_update = forms.CharField(max_length=100)
+    nombre_pub = forms.CharField(max_length=100)
+    descrip_pub = forms.CharField(max_length=100)
+
+class update_card(forms.Form):
+    id_update = forms.CharField(max_length=100)
+    nombre_card = forms.CharField(max_length=100)
+    cargo_card = forms.CharField(max_length=100)
+    descrip_card = forms.CharField(max_length=100)

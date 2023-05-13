@@ -159,14 +159,8 @@
                         <button class="btn btn-primary">Enviar </button>
                       </div>
                     </form>
-
-
                   </div>
-
-
                   <!-- publicidad cursos -->
-
-
                   <div class="tab-pane fade" id="nav-cursos" role="tabpanel" aria-labelledby="nav-cursos-tab"
                     tabindex="0">
                     <br>
@@ -174,29 +168,19 @@
                       {% csrf_token %}
                       <div class="input-group mb-3">
                         <span class="input-group-text"> Curso</span>
-                        <select name="select" class="form-select" onchange="prueba(this)">
-                          <option selected>Open this select</option>
+
+                        <select name="id_curso_pub" id="id_curso_pub" class="form-select">
+                          <option selected disabled>Ver selecciones</option>
                           {% for curso in cursos %}
-                          <option value="{{curso.id}}" >N°{{curso.id}} -- {{curso.nombre_curso}} </option>
+                          <option value="{{curso.id}}" >N°{{curso.id}} -- {{curso.nombre_curso}}</option>
                           {% endfor %}
-                          <input type="hidden" value="0" name="id_curso_pub" id="id_curso_public">
                         </select>
                         
                       </div>
                       <button type="submit" class="btn btn-warning">Enviar</button>
                     </form>
-
-
-
                   </div>
-
-
-
-
-
                 </div>
-
-
               </div>
             </div>
 
@@ -251,23 +235,10 @@
   <script>
     $(document).ready(function () {
       const bsTab = new bootstrap.Tab('#nav-profile-tab');
-      bsTab.addClass("active")
       bsTab.show();
     });
   </script>
-
-
-
   {% endif %}
-
-<script>
-
-function prueba(el) {
-  document.getElementById('id_curso_public').value = el.value;
-}
-</script>
-
-
 
 
 
@@ -282,35 +253,43 @@ function prueba(el) {
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Curso N°{{perfil2.id}}</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Carta precentación N°{{perfil2.id}}</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="container text-center ">
+            <form action="/actualizar_card/" method="POST" id="update_card"> 
+            {% csrf_token %}
+            <input type="hidden" value="{{perfil2.id}}" id="id_update" name="id_update">
             <div class="row justify-content-center  align-items-center ">
-              <div class="col-md-1"></div>
               <div class="col-md-6">
                 <div class="container text-center">
                   <div class="row">
                     <div class="col-4 text-start">
                       <h6>Nombre :</h6>
                     </div>
-                    <div class="col-8 text-start"><input type="text" style="width: 350px;"
-                        value="{{perfil2.nombre_card}}"></div>
+                    <div class="col-8 text-start">
+                      <input type="text" style="width: 350px;" id="nombre_card" name="nombre_card" class="form-control"
+                        value="{{perfil2.nombre_card}}">
+                      </div>
                   </div>
                   <div class="row">
                     <div class="col-4 text-start">
                       <h6>Cargo :</h6>
                     </div>
-                    <div class="col-8 text-start"><textarea type="text"
-                        style="width: 350px; height: 150px;">{{perfil2.cargo_card}}</textarea></div>
+                    <div class="col-8 text-start">
+                      <textarea type="text" id="cargo_card" name="cargo_card" class="form-control"
+                        style="width: 350px; height: 150px;">{{perfil2.cargo_card}}</textarea>
+                      </div>
                   </div>
                   <div class="row">
                     <div class="col-4 text-start">
                       <h6>Descripcion :</h6>
                     </div>
-                    <div class="col-8 text-start"><textarea type="text"
-                        style="width: 350px; height: 150px;">{{perfil2.descrip_card}}</textarea></div>
+                    <div class="col-8 text-start">
+                      <textarea type="text" id="descrip_card" name="descrip_card" class="form-control"
+                        style="width: 350px; height: 150px;">{{perfil2.descrip_card}}</textarea>
+                      </div>
                   </div>
 
                 </div>
@@ -322,13 +301,14 @@ function prueba(el) {
 
               </div>
             </div>
+          </form>
 
           </div>
 
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="submit" form="update_card" class="btn btn-primary">Guardar</button>
         </div>
       </div>
     </div>
@@ -348,6 +328,7 @@ function prueba(el) {
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+          <form action="/actualizar_public/" method="post" id="update_public">
           <div class="container text-center ">
             <div class="row justify-content-center  align-items-center ">
               <div class="col-md-1"></div>
@@ -357,7 +338,8 @@ function prueba(el) {
                     <div class="col-4 text-start">
                       <h6>Titulo :</h6>
                     </div>
-                    <div class="col-8 text-start"><input type="text" style="width: 350px;"
+                    <div class="col-8 text-start">
+                      <input type="text" style="width: 350px;" id="nombre_pub" name="nombre_pub" class="form-control"
                         value="{{public.nombre_pub}}"></div>
                   </div>
 
@@ -365,8 +347,10 @@ function prueba(el) {
                     <div class="col-4 text-start">
                       <h6>Descripcion :</h6>
                     </div>
-                    <div class="col-8 text-start"><textarea type="text"
-                        style="width: 350px; height: 150px;">{{public.descrip_pub}}</textarea></div>
+                    <div class="col-8 text-start">
+                      <textarea type="text" id="descrip_pub" name="descrip_pub" class="form-control"
+                      style="width: 350px; height: 150px;">{{public.descrip_pub}}</textarea>
+                    </div>
                   </div>
 
                 </div>
@@ -374,31 +358,21 @@ function prueba(el) {
               <div class="col-sm-5 ">
                 <h4></h4>
                 <h6>Imagen</h6>
-                <img src="{{public.img_pub.url}}" width="350px"><br>
-
+                <br>
               </div>
             </div>
 
           </div>
-
+        </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="submit" form="update_public" class="btn btn-primary">Guardar</button>
         </div>
       </div>
     </div>
   </div>
   {% endfor %}
-
-
-
-
-
-
-
-
-
 
 </body>
 

@@ -7,97 +7,121 @@
 
   <div class="container text-center">
     <h3>Consultas de funcionarios</h3>
-    <div class="container" style="width: 450px; height: 50px; " >  
+    <div class="container" style="width: 450px; height: 50px; ">
       <nav>
         <div class="nav nav-pills nav-justified" id="nav-tab" role="tablist">
           <button class="nav-link active" id="normal-tab" data-bs-toggle="tab" data-bs-target="#normal-tab-pane"
             type="button" role="tab" aria-controls="normal-tab-pane" aria-selected="true">Consultas pendientes</button>
-          <button class="nav-link" id="cursos-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-cursos"
-            type="button" role="tab" aria-controls="cursos-profile" aria-selected="false">Consultas Respondidas</button>
+          <button class="nav-link" id="consulta-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-consulta"
+            type="button" role="tab" aria-controls="consulta-profile" aria-selected="false">Consultas
+            Respondidas</button>
         </div>
       </nav>
     </div>
     <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="normal-tab-pane" role="tabpanel"
-        aria-labelledby="normal-tab" tabindex="0">
+      <div class="tab-pane fade show active" id="normal-tab-pane" role="tabpanel" aria-labelledby="normal-tab"
+        tabindex="0">
+
+        <div class=" container text-center">
+          <form action="/busqueda_consulta/" method="POST" id="buscar_consulta">
+            {% csrf_token %}
+            <div class="input-group text-center" style="width: 450px;">
+              <label class="input-group-text">Busqueda de consulta</label>
+              <input type="text" name="busqueda_consulta" id="busqueda_consulta" class="form-control">
+              <button class="btn btn-warning" type="submit" id="filtro_consulta" form="buscar_consulta"><img
+                  src="{% static 'img/busqueda2.png' %}" height="15px"></button>
+            </div>
+          </form>
+        </div>
         <table class="table table-bordered border-primary">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Nombre Completo</th>
-          <th scope="col">Rut</th>
-          <th scope="col">Numero telefono</th>
-          <th scope="col">Correo</th>
-          <th scope="col">Respondido</th>
-          <th scope="col">Eliminar</th>
-        </tr>
-      </thead>
-      <tbody class="table-group-divider">
-        {% for list_consultas in consultas %}
-        <tr>
-          <th scope="row">{{list_consultas.id}}</th>
-          <td>{{list_consultas.nombre_completo}}</td>
-          <td>{{list_consultas.rut}}</td>
-          <td>{{list_consultas.telefono}}</td>
-          <td>{{list_consultas.Correo}}</td>
-          <td>
-            <form action="/respuesta_consulta/" method="POST">
-              {% csrf_token %}
-              <input type="hidden" value="{{list_consultas.id}}" id="id_respuesta" name="id_respuesta">
-              <button type="submit" class="btn btn-Warning">
-              <img src="{% static 'img/editar.png' %}" width="20px"></button>
-            </form>
-          </td>
-          <td>
-            <form action="/delete_consulta/" method="POST">
-              {% csrf_token %}
-              <input type="hidden" value="{{list_consultas.id}}" name="id_delete">
-              <button type="submit" class="btn btn-danger"><img src="{% static 'img/basura.png' %}"
-                  width="20px"></button>
-            </form>
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre Completo</th>
+              <th scope="col">Rut</th>
+              <th scope="col">Numero telefono</th>
+              <th scope="col">Correo</th>
+              <th scope="col">Respondido</th>
+              <th scope="col">Eliminar</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            {% for list_consultas in consultas %}
+            <tr>
+              <th scope="row">{{list_consultas.id}}</th>
+              <td>{{list_consultas.nombre_completo}}</td>
+              <td>{{list_consultas.rut}}</td>
+              <td>{{list_consultas.telefono}}</td>
+              <td>{{list_consultas.Correo}}</td>
+              <td>
+                <form action="/respuesta_consulta/" method="POST">
+                  {% csrf_token %}
+                  <input type="hidden" value="{{list_consultas.id}}" id="id_respuesta" name="id_respuesta">
+                  <button type="submit" class="btn btn-Warning">
+                    <img src="{% static 'img/editar.png' %}" width="20px"></button>
+                </form>
+              </td>
+              <td>
+                <form action="/delete_consulta/" method="POST">
+                  {% csrf_token %}
+                  <input type="hidden" value="{{list_consultas.id}}" name="id_delete">
+                  <button type="submit" class="btn btn-danger"><img src="{% static 'img/basura.png' %}"
+                      width="20px"></button>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
       </div>
 
-      <div class="tab-pane fade" id="nav-cursos" role="tabpanel" aria-labelledby="nav-cursos-tab"
-      tabindex="0">
-      <table class="table table-bordered border-primary">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nombre Completo</th>
-            <th scope="col">Rut</th>
-            <th scope="col">Numero telefono</th>
-            <th scope="col">Correo</th>
-            <th scope="col">Fecha de respuesta</th>
-            <th scope="col">Eliminar</th>
-          </tr>
-        </thead>
-        <tbody class="table-group-divider">
-          {% for list_consulta_respuesta in consulta_respuesta2 %}
-          <tr>
-            <th scope="row">{{list_consulta_respuesta.id}}</th>
-            <td>{{list_consulta_respuesta.nombre_completo}}</td>
-            <td>{{list_consulta_respuesta.rut}}</td>
-            <td>{{list_consulta_respuesta.telefono}}</td>
-            <td>{{list_consulta_respuesta.Correo}}</td>
-            <td>{{list_consulta_respuesta.fecha_respuesta}}</td>
-            <td>
-              <form action="/delete_consulta/" method="POST">
-                {% csrf_token %}
-                <input type="hidden" value="{{list_consulta_respuesta.id}}" name="id_delete">
-                <button type="submit" class="btn btn-danger"><img src="{% static 'img/basura.png' %}"
-                    width="20px"></button>
-              </form>
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
+      <div class="tab-pane fade" id="nav-consulta" role="tabpanel" aria-labelledby="consulta-profile-tab" tabindex="0">
+        <div class=" container text-center">
+          <form action="/busqueda_consulta_respuesta/" method="POST" id="buscar_consulta_respondido">
+            {% csrf_token %}
+            <div class="input-group text-center" style="width: 450px;">
+              <label class="input-group-text">Busqueda de consulta</label>
+              <input type="text" name="busqueda_consulta_respondidas" id="busqueda_consulta_respondidas"
+                class="form-control">
+              <button class="btn btn-warning" type="submit" id="filtro_consulta" form="buscar_consulta_respondido"><img
+                  src="{% static 'img/busqueda2.png' %}" height="15px"></button>
+            </div>
+          </form>
+        </div>
+        <table class="table table-bordered border-primary">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre Completo</th>
+              <th scope="col">Rut</th>
+              <th scope="col">Numero telefono</th>
+              <th scope="col">Correo</th>
+              <th scope="col">Fecha de respuesta</th>
+              <th scope="col">Eliminar</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            {% for list_consulta_respuesta in consulta_respuesta2 %}
+            <tr>
+              <th scope="row">{{list_consulta_respuesta.id}}</th>
+              <td>{{list_consulta_respuesta.nombre_completo}}</td>
+              <td>{{list_consulta_respuesta.rut}}</td>
+              <td>{{list_consulta_respuesta.telefono}}</td>
+              <td>{{list_consulta_respuesta.Correo}}</td>
+              <td>{{list_consulta_respuesta.fecha_respuesta}}</td>
+              <td>
+                <form action="/delete_consulta_respuestas/" method="POST">
+                  {% csrf_token %}
+                  <input type="hidden" value="{{list_consulta_respuesta.id}}" name="id_delete">
+                  <button type="submit" class="btn btn-danger"><img src="{% static 'img/basura.png' %}"
+                      width="20px"></button>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 
@@ -131,9 +155,60 @@
   </div>
   {% endfor %}
 
-  {% endblock content %}
 
+
+  {% if respuesta %}
+  <script>
+    $(document).ready(function () {
+      const bsTab = new bootstrap.Tab('#consulta-profile-tab');
+      bsTab.show();
+    });
+  </script>
+  {% endif %}
+
+  <!-- Modal llamado -->
+  {% if fallafiltroconsultas %}
+  <script>
+    $(document).ready(function () {
+      const myModal = new bootstrap.Modal('#ventanafalla');
+      myModal.show();
+    });
+  </script>
+  {%endif%}
+
+
+  <!-- Modal falla de busqueda -->
+
+  <div class="modal fade" id="ventanafalla" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Aviso Falla!!</h1>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-danger" role="alert">
+            <div class="row">
+              <div class="col-2">
+                <img src="{% static 'img/multiplicar.png' %}" width="65px">
+              </div>
+              <div class="col" style="margin-top: 15px;">
+                <h6>No se encontro alguna consulta con el dato especificado!!!</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+
+
+  
 
 </body>
 
 </html>
+ {% endblock content %}

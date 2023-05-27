@@ -4,14 +4,90 @@
 
 <body>
   <br>
-  <div class="container" style="margin-top: 120px; margin-left: 50px;">
+  <div style="margin-top: 120px; margin-left: 50px;">
     <div class="row">
       <div class="col">
-        <div id="menu">
+        <div class="text-center">
           <h6>Filtro de busqueda</h6>
-          Seleccionar departamento:
-          Fecha de corte:
-          Tipo de funcionarios:
+          <div>
+            <form action="/filtro_nombre/" method="POST" class="text-start" id="filtro_cursos_nombre">
+              {% csrf_token %}
+              <label for="">Nombre curso :</label>
+              <div class="input-group">
+                <input type="text" name="nombre_curso_buscar" id="nombre_curso_buscar" class="form-control">
+                <button class="btn btn-warning" type="submit" id="filtro_cursos" form="filtro_cursos_nombre"><img
+                    src="{% static 'img/busqueda2.png' %}" height="15px"></button>
+              </div>
+            </form>
+          </div>
+
+          <div>
+            <form action="/filtro_hospital/" method="POST" class="text-start" id="filtro_cursos_hospital">
+              {% csrf_token %}
+              <label class="form-label">Hospital :</label>
+              <div class="input-group">
+                <select name="hospital_curso_buscar" id="hospital_curso_buscar" value=" " class="form-select">
+                  <option selected disabled>Ver selecciones</option>
+                  {%for class_hosp in class_hospital %}
+                  <option value="{{class_hosp.nombre_hospital}}">{{class_hosp.nombre_hospital}}</option>
+                  {% endfor %}
+                </select>
+                <button class="btn btn-warning" type="submit" form="filtro_cursos_hospital" id="filtro_cursos"><img
+                    src="{% static 'img/busqueda2.png' %}" height="15px"></button>
+              </div>
+            </form>
+          </div>
+
+
+          <div>
+            <form action="/filtro_servicio/" method="POST" class="text-start" id="filtro_cursos_servicio">
+              {% csrf_token %}
+              <label class="form-label">Servicio :</label>
+              <div class="input-group">
+                <select name="servicio_curso_buscar" id="servicio_curso_buscar" value=" " class="form-select">
+                  <option selected disabled>Ver selecciones</option>
+                  {%for class_serv in class_serv %}
+                  <option value="{{class_serv.nombre_sev}}">{{class_serv.nombre_sev}}</option>
+                  {% endfor %}
+                </select>
+                <button class="btn btn-warning" type="submit" form="filtro_cursos_servicio" id="filtro_cursos"><img
+                    src="{% static 'img/busqueda2.png' %}" height="15px"></button>
+              </div>
+            </form>
+          </div>
+
+
+          <div>
+            <form action="/filtro_time/" method="POST" class="text-start" id="filtro_cursos_time">
+              {% csrf_token %}
+              <label class="form-label">Próximo a finalzar :</label>
+              <div class="input-group">
+                <select name="prox_end_curso_buscar" id="prox_end_curso_buscar" value=" " class="form-select">
+                  <option selected disabled>Ver selecciones</option>
+                  <option value="15">15 Días</option>
+                  <option value="10">10 Días</option>
+                  <option value="5">5 Días</option>
+                  <option value="3">3 Días</option>
+                </select>
+                <button class="btn btn-warning" type="submit" form="filtro_cursos_time" id="filtro_cursos"><img
+                    src="{% static 'img/busqueda2.png' %}" height="15px"></button>
+              </div>
+            </form>
+          </div>
+
+          <div>
+            <form action="/filtro_personal/" method="POST" class="text-start" id="filtro_cursos_personal">
+              {% csrf_token %}
+              <label for="">Personal :</label>
+              <div class="input-group">
+                <input type="text" name="personal_curso_buscar" id="personal_curso_buscar" class="form-control">
+                <button class="btn btn-warning" type="submit" id="filtro_cursos" form="filtro_cursos_personal"><img
+                    src="{% static 'img/busqueda2.png' %}" height="15px"></button>
+              </div>
+            </form>
+          </div>
+
+
 
         </div>
       </div>
@@ -21,7 +97,7 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
 
               {% for cursos in cursos %}
-              <div class="col">
+              <div class="col mb-3">
                 <div class="card">
                   <img src="{{cursos.img_curso.url}}" class="card-img-top">
                   <div class="card-body">
@@ -49,8 +125,8 @@
 
     {% for cursos in cursos %}
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal{{cursos.id}}" tabindex="-1"
-      aria-labelledby="exampleModalLabel" aria-hidden="true" role="dialog">
+    <div class="modal fade" id="exampleModal{{cursos.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+      aria-hidden="true" role="dialog">
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
           <div class="modal-header">
@@ -64,42 +140,68 @@
                 <div class="col-md-6">
                   <div class="container text-center">
                     <h2>{{cursos.nombre_curso}}</h2>
-                  <br>
-                  <div class="row">
-                    <div class="col-4 text-start"><h6>Descripcion :</h6></div>
-                    <div class="col-8 text-start"><p>{{cursos.descrip_larga_curso}}</p></div>
-                  </div>
-                  <div class="row ">
-                    <div class="col-4 text-start"><h6>Requisistos :</h6></div>
-                    <div class="col-8 text-start"><p>{{cursos.requisitos_curso}}</p></div>
-                  </div>
-                  <div class="row ">  
-                    <div class="col-4 text-start" ><h6>Hospital :</h6></div>
-                    <div class="col-8 text-start"><p>{{cursos.hospital_curso}}</p></div>
-                  </div>
-                  <div class="row ">
-                    <div class="col-4 text-start"><h6>Servicio :</h6></div>
-                    <div class="col-8 text-start"><p>{{cursos.servicio_curso}}</p></div>
-                  </div>
-                  <div class="row">
-                    <div class="col-4 text-start"><h6>Inicia :</h6></div>
-                    <div class="col-8 text-start"><p>{{cursos.time_start_curso}}</p></div>
-                  </div>
-                  <div class="row">
-                    <div class="col-4 text-start "><h6>Finaliza :</h6></div>
-                    <div class="col-8 text-start"><p>{{cursos.time_end_curso}}</p></div>
-                  </div>
-                  <div class="row">
-                    <div class="col-4 text-start"><h6>Personal Dirigido :</h6></div>
-                    <div class="col-8 text-start">
-                      {% for x in cursos.personal_cursos.split %}
-                      <li>{{x}} </li>
-                      {% endfor %}
+                    <br>
+                    <div class="row">
+                      <div class="col-4 text-start">
+                        <h6>Descripcion :</h6>
+                      </div>
+                      <div class="col-8 text-start">
+                        <p>{{cursos.descrip_larga_curso}}</p>
+                      </div>
                     </div>
-                  </div>
+                    <div class="row ">
+                      <div class="col-4 text-start">
+                        <h6>Requisistos :</h6>
+                      </div>
+                      <div class="col-8 text-start">
+                        <p>{{cursos.requisitos_curso}}</p>
+                      </div>
+                    </div>
+                    <div class="row ">
+                      <div class="col-4 text-start">
+                        <h6>Hospital :</h6>
+                      </div>
+                      <div class="col-8 text-start">
+                        <p>{{cursos.hospital_curso}}</p>
+                      </div>
+                    </div>
+                    <div class="row ">
+                      <div class="col-4 text-start">
+                        <h6>Servicio :</h6>
+                      </div>
+                      <div class="col-8 text-start">
+                        <p>{{cursos.servicio_curso}}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-4 text-start">
+                        <h6>Inicia :</h6>
+                      </div>
+                      <div class="col-8 text-start">
+                        <p>{{cursos.time_start_curso}}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-4 text-start ">
+                        <h6>Finaliza :</h6>
+                      </div>
+                      <div class="col-8 text-start">
+                        <p>{{cursos.time_end_curso}}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-4 text-start">
+                        <h6>Personal Dirigido :</h6>
+                      </div>
+                      <div class="col-8 text-start">
+                        {% for x in cursos.personal_cursos.split %}
+                        <li>{{x}} </li>
+                        {% endfor %}
+                      </div>
+                    </div>
 
-                  <button><a href="{{cursos.form_carga_curso}}"></a></button>
-                </div>
+                    <button><a href="{{cursos.form_carga_curso}}"></a></button>
+                  </div>
                 </div>
                 <div class="col-sm-5 ">
                   <img src="{{cursos.img_curso.url}}" width="350px">
@@ -116,8 +218,49 @@
       </div>
     </div>
     {% endfor %}
+
+    <!-- Modal llamado -->
+    {% if fallafiltro %}
+    <script>
+      $(document).ready(function () {
+        const myModal = new bootstrap.Modal('#ventanafalla');
+        myModal.show();
+      });
+      console.log("mensaje enviado");
+    </script>
+    {%endif%}
+
+
+    <!-- Modal falla de busqueda -->
+
+    <div class="modal fade" id="ventanafalla" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Aviso Falla!!</h1>
+          </div>
+          <div class="modal-body">
+            <div class="alert alert-danger" role="alert">
+              <div class="row">
+                <div class="col-2">
+                  <img src="{% static 'img/multiplicar.png' %}" width="65px">
+                </div>
+                <div class="col" style="margin-top: 15px;">
+                  <h6>No se encotraron cursos con el filtro especificado!!!</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="/lista_cursos_fun/">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
 </body>
 {% endblock content %}
-
-
-

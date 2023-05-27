@@ -1,4 +1,5 @@
 from django import forms
+from django.core.exceptions import ValidationError
 from .models import (create_nuevo_curso, 
                           create_nuevo_card, 
                           create_nuevo_publicacion, 
@@ -9,7 +10,21 @@ from .models import (create_nuevo_curso,
 class CreateNewCard(forms.ModelForm):
     class Meta:
         model = create_nuevo_card
-        fields = '__all__'
+        fields = ['img_card','nombre_card','cargo_card','descrip_card']
+
+    def clean_img_card(self):
+        IMAGE_FILE_TYPES = ['png', 'jpg', 'jpeg']
+        uploaded_image = self.cleaned_data.get("img_card",  False)
+        extension = str(uploaded_image).split('.')[-1]
+        file_type = extension.lower()
+        if not uploaded_image:       
+            raise ValidationError("Por favor sube una imagen") # handle empty image
+
+        if file_type not in IMAGE_FILE_TYPES:
+            raise ValidationError("El archivo no es una imagen.")
+        return uploaded_image
+    
+
 
 class CreateNewPublication(forms.ModelForm):
     class Meta:
@@ -84,3 +99,26 @@ class update_card(forms.Form):
     nombre_card = forms.CharField(max_length=100)
     cargo_card = forms.CharField(max_length=100)
     descrip_card = forms.CharField(max_length=100)
+
+class form_filtro_cursos_nombre(forms.Form):
+    nombre_curso_buscar = forms.CharField(max_length=100, required=False)
+
+class form_filtro_cursos_time(forms.Form):
+    prox_end_curso_buscar = forms.CharField(max_length=100, required=False)
+
+class form_filtro_cursos_servicio(forms.Form):
+    servicio_curso_buscar = forms.CharField(max_length=100 ,required=False)
+
+class form_filtro_cursos_hospital(forms.Form):
+    hospital_curso_buscar = forms.CharField(max_length=100,required=False)
+
+class form_filtro_cursos_personal(forms.Form):
+    personal_curso_buscar = forms.CharField(max_length=100, required=False)
+
+class form_busqueda_consulta_respondidas(forms.Form):
+    busqueda_consulta_respondidas = forms.CharField(max_length=100, required=False)
+
+class form_busqueda_consulta(forms.Form):
+    busqueda_consulta = forms.CharField(max_length=100, required=False)
+class form_busqueda_curso_operador(forms.Form):
+    busqueda_curso_operador  = forms.CharField(max_length=100, required=False)

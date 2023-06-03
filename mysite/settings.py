@@ -77,14 +77,18 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
 DATABASES = {
-	'default': {
-		'ENGINE': 'django.db.backends.postgresql_psycopg2',
-		'NAME' : 'db_cursos',
-		'USER' : 'tesis',
-		'PASSWORD' : 'root',
-		'HOST' : 'localhost' ,#si tienes otra dirección host debes remplazar esta
-		'PORT' : '' #si lo dejas vacío tomara el puerto por default
-	}
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": "mybasedata",
+    }
+    # 'default': {
+    # 	'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    # 	'NAME' : 'db_cursos',
+    # 	'USER' : 'tesis',
+    # 	'PASSWORD' : 'root',
+    # 	'HOST' : 'localhost' ,#si tienes otra dirección host debes remplazar esta
+    # 	'PORT' : '' #si lo dejas vacío tomara el puerto por default
+    # }
 }
 
 
@@ -124,6 +128,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -131,5 +136,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 MEDIA_URL = 'media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'myapp/media')
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'myapp/media')

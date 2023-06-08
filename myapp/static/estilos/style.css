@@ -115,3 +115,11 @@ cursos disponibles */
     color: #0d6efd !important;
     font-weight: 700 !important;
 }
+
+
+/* lista cursos */
+
+.card-body-list-cur {
+    height: 280px !important;
+    /* Ajusta la altura deseada */
+}

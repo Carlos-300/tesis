@@ -61,16 +61,10 @@
     /* Ajusta la altura deseada */
 }
 
-
-
-
-
 .card-box {
     width: 18rem;
     display: flex !important;
 }
-
-
 
 .box-text-cards {
     color: white;
@@ -85,14 +79,12 @@
     background-image: linear-gradient(rgba(13, 110, 253, 0.6), rgba(13, 110, 253, 0.6)), url('../img/fondo1.jpg');
 }
 
-
 .card-img-top {
     width: 450px;
     height: 200px;
     /* Ajusta la altura deseada */
     object-fit: cover;
 }
-
 
 /* footer */
 
@@ -110,16 +102,27 @@ cursos disponibles */
 
 
 /* consultar cursos */
-
 .text-consult-cur {
     color: #0d6efd !important;
     font-weight: 700 !important;
 }
 
-
 /* lista cursos */
-
 .card-body-list-cur {
-    height: 280px !important;
+    height: 250px !important;
     /* Ajusta la altura deseada */
+}
+
+.description-scroll {
+    word-wrap: break-word;
+}
+
+/* cursos add */
+
+.nav-link-cur-add {
+    color: black !important;
+}
+
+.cursos-add-box {
+    margin: 15px 0 15px 0;
 }

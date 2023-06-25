@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 <html>
+<<<<<<< HEAD
   <head>
     <meta charset="utf-8">
     <link rel="icon" alt="Logo" type="image/png" class="rounded-pill" href="{% static 'img/logo_salud.png' %}">
@@ -30,5 +31,32 @@
       </form>
     </div>
   </body>
+=======
+
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Login Operador</title>
+  <link rel="stylesheet" href="{% static 'style/style.css' %}">
+</head>
+
+<body id="log_back">
+
+  <div class="login-box">
+    <img src="{% static 'img/logo_salud.png' %}" class="avatar" alt="Avatar Image">
+    <h1>Bienvenido Operador</h1>
+    <form>
+      <!-- USERNAME INPUT -->
+      <label for="username">Usuario</label>
+      <input type="text" placeholder="Enter Usuario">
+      <!-- PASSWORD INPUT -->
+      <label for="password">Contraseña</label>
+      <input type="password" placeholder="Enter Contraseña">
+      <input type="submit" value="Iniciar sesión">
+      <a href="#">Lost your Password?</a><br>
+      <a href="#">Don't have An account?</a>
+    </form>
+  </div>
+</body>
+>>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
 
 </html>

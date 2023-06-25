@@ -8,8 +8,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
   <link rel="icon" alt="Logo" type="image/png" class="rounded-pill" href="{% static 'img/logo_salud.png' %}">
   <title>Operador/Mod_index</title>
+=======
+  <title>Document</title>
+>>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
 
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
@@ -45,12 +49,18 @@
           <li class="nav-item">
             <a class="nav-link" href="/consultas/">LISTA DE CONSULTAS</a>
           </li>
+<<<<<<< HEAD
           <li class="nav-item">
             <a class="nav-link" href="/resgitrar/">REGISTRAR</a>
         </li>
         </ul>
         <span class="navbar-text">
           <a class="nav-link active" aria-current="page" href="/logout/"><img src="{% static 'img/salida.png' %}"
+=======
+        </ul>
+        <span class="navbar-text">
+          <a class="nav-link active" aria-current="page" href="/index/"><img src="{% static 'img/salida.png' %}"
+>>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
               width="40px">
           </a>
         </span>
@@ -78,6 +88,7 @@
             <div class="col-4">
               <div class="container list_cartas">
                 <h4 class="my-3 fw-bold">Ingresar cartas de precentación</h4>
+<<<<<<< HEAD
                 <form action="" method="POST" enctype="multipart/form-data" id="ingresar_card_form">
                   {% csrf_token %}
                   <div class="my-1 text-start">
@@ -122,6 +133,31 @@
                   </div>
                   <div class="text-start mt-5 my-1 text-center">
                     <button class="btn btn-primary" type="submit" form="ingresar_card_form" id="ingresar_card" name="ingresar_card">Enviar</button>
+=======
+                <form action="/ingresar_card_form/" method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="my-1 text-start">
+                    <label class="my-1" for="">Imagen : </label>
+                    <input class="form-control form-control-sm" id="formFileSm" type="file" name="img_card">
+                  </div>
+                  <div class="my-1 text-start">
+                    <label class="my-1" for="">Nombre : </label>
+                    <input class="form-control form-control-sm" type="text" placeholder="Nombre"
+                      aria-label=".form-control-sm example" name="nombre_card">
+                  </div>
+                  <div class="my-1 text-start">
+                    <label class="my-1" for="">Cargo : </label>
+                    <input class="form-control form-control-sm" type="text" placeholder="Cargo"
+                      aria-label=".form-control-sm example" name="cargo_card">
+                  </div>
+                  <div class="my-1 text-start">
+                    <label class="my-1" for="">Descripcion:</label>
+                    <input class="form-control form-control-sm" type="text" placeholder="Descripción"
+                      aria-label=".form-control-sm example" name="descrip_card">
+                  </div>
+                  <div class="text-start mt-5 my-1 text-center">
+                    <button class="btn btn-primary">Enviar</button>
+>>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
                   </div>
                 </form>
               </div>
@@ -254,6 +290,10 @@
                           <option value="{{curso.id}}">N°{{curso.id}} -- {{curso.nombre_curso}}</option>
                           {% endfor %}
                         </select>
+<<<<<<< HEAD
+=======
+
+>>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
                       </div>
                       <button type="submit" class="btn btn-warning" form="public_cursos" id="curso_public" name="curso_public">Enviar</button>
                     </form>
@@ -336,7 +376,11 @@
         </div>
         <div class="modal-body">
           <div class="container text-center ">
+<<<<<<< HEAD
             <form action="" method="POST" enctype="multipart/form-data" id="update_card_{{perfil2.id}}">
+=======
+            <form action="/actualizar_card/" method="POST" id="update_card">
+>>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
               {% csrf_token %}
               <input type="hidden" value="{{perfil2.id}}" id="id_update" name="id_update">
               <div class="row justify-content-center  align-items-center ">
@@ -349,12 +393,15 @@
                       <div class="col-8 text-start">
                         <input type="text" style="width: 350px;" id="nombre_card" name="nombre_card"
                           class="form-control" value="{{perfil2.nombre_card}}">
+<<<<<<< HEAD
                           {% if form_card_up%}
                           <div class="alert alert-warning alert-bg " role="alert">
                             {{form_card_up.nombre_card.errors}}
                           </div>
                         {%endif%}
                           
+=======
+>>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
                       </div>
                     </div>
                     <div class="row">
@@ -364,11 +411,14 @@
                       <div class="col-8 text-start">
                         <textarea type="text" id="cargo_card" name="cargo_card" class="form-control"
                           style="width: 350px; height: 150px;">{{perfil2.cargo_card}}</textarea>
+<<<<<<< HEAD
                           {% if form_card_up%}
                           <div class="alert alert-warning alert-bg " role="alert">
                             {{form_card_up.cargo_card.errors}}
                           </div>
                         {%endif%}
+=======
+>>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
                       </div>
                     </div>
                     <div class="row">
@@ -378,11 +428,14 @@
                       <div class="col-8 text-start">
                         <textarea type="text" id="descrip_card" name="descrip_card" class="form-control"
                           style="width: 350px; height: 150px;">{{perfil2.descrip_card}}</textarea>
+<<<<<<< HEAD
                           {% if form_card_up%}
                           <div class="alert alert-warning alert-bg " role="alert">
                             {{form_card_up.descrip_card.errors}}
                           </div>
                         {%endif%}
+=======
+>>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
                       </div>
                     </div>
 
@@ -391,12 +444,15 @@
                 <div class="col-sm-5 ">
                   <h4></h4>
                   <h6>Imagen</h6>
+<<<<<<< HEAD
                   <input type="file" class="form-control form-control-sm" name="img_card_up" id="img_card_up">
                   {% if form_card_up%}
                           <div class="alert alert-warning alert-bg " role="alert">
                             {{form_card_up.img_card.errors}}
                           </div>
                   {%endif%}
+=======
+>>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
                   <img src="{{perfil2.img_card.url}}" width="350px"><br>
 
                 </div>
@@ -428,7 +484,11 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+<<<<<<< HEAD
           <form action="" method="post" enctype="multipart/form-data" id="update_public_{{public.id}}">
+=======
+          <form action="/actualizar_public/" method="post" id="update_public">
+>>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
             <div class="container text-center ">
               <div class="row justify-content-center  align-items-center ">
                 <div class="col-md-1"></div>
@@ -441,11 +501,14 @@
                       <div class="col-8 text-start">
                         <input type="text" style="width: 350px;" id="nombre_pub" name="nombre_pub" class="form-control"
                           value="{{public.nombre_pub}}">
+<<<<<<< HEAD
                           {% if form_public_up%}
                           <div class="alert alert-warning alert-bg " role="alert">
                             {{form_public_up.nombre_pub.errors}}
                           </div>
                           {%endif%}
+=======
+>>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
                       </div>
                     </div>
 
@@ -456,11 +519,14 @@
                       <div class="col-8 text-start">
                         <textarea type="text" id="descrip_pub" name="descrip_pub" class="form-control"
                           style="width: 350px; height: 150px;">{{public.descrip_pub}}</textarea>
+<<<<<<< HEAD
                           {% if form_public_up%}
                           <div class="alert alert-warning alert-bg " role="alert">
                             {{form_public_up.descrip_pub.errors}}
                           </div>
                           {%endif%}
+=======
+>>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
                       </div>
                     </div>
 
@@ -469,6 +535,7 @@
                 <div class="col-sm-5 ">
                   <h4></h4>
                   <h6>Imagen</h6>
+<<<<<<< HEAD
                   <input type="file" class="form-control" name="img_pub_up" id="img_pub_up">
                   {% if form_public_up%}
                           <div class="alert alert-warning alert-bg " role="alert">
@@ -477,6 +544,9 @@
                           {%endif%}
                   <br>
                   <img src="{{public.img_pub.url}}" class="card-img-top">
+=======
+                  <br>
+>>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
                 </div>
               </div>
 
@@ -541,6 +611,7 @@
     </div>
   </footer>
 
+<<<<<<< HEAD
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.js"></script>
 
@@ -569,6 +640,27 @@
 <!-- AJAX -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
+=======
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+>>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
 </body>
 
 </html>

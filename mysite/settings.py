@@ -80,6 +80,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
+<<<<<<< HEAD
 	'default': {
 		'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME' : 'db_curso_5',
@@ -88,6 +89,16 @@ DATABASES = {
 		'HOST' : 'localhost',#si tienes otra dirección host debes remplazar esta
 		'PORT' : '' #si lo dejas vacío tomara el puerto por default
 	}
+=======
+    'default': {
+     	'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    	'NAME' : 'db_cursos',
+    	'USER' : 'tesis',
+    	'PASSWORD' : 'root',
+    	'HOST' : 'localhost' ,#si tienes otra dirección host debes remplazar esta
+    	'PORT' : '' #si lo dejas vacío tomara el puerto por default
+    }
+>>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
 }
 
 
@@ -126,14 +137,22 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'myapp/static')]
+<<<<<<< HEAD
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'myapp/media')
 
+=======
+>>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+<<<<<<< HEAD
 
+=======
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'myapp/media')
+>>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce

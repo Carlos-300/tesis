@@ -34,11 +34,14 @@
     font-family: sans-serif;
     height: 100vh;
   }
-
+.hola{
+  margin-top: 10px;
+  background-color: aqua;
+  border: solid black 1px;
+}
 
 .login-box {
     width: 320px;
-    height: 420px;
     background: rgb(233, 233, 233);
     color: rgb(0, 0, 0);
     top: 50%;

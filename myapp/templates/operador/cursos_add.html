@@ -3,7 +3,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
 
 <head>
     <meta charset="UTF-8">
@@ -24,25 +23,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 </head>
 
-=======
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-    <!-- MDB -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.css" rel="stylesheet" />
-    <!-- CSS only -->
-    <link rel="stylesheet" href="{% static 'estilos/style.css' %}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-</head>
-
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
 <body>
     <nav class="navbar navbar-expand-sm navbar-light bg-primary">
         <div class="container-fluid justify-content-center">
@@ -67,18 +47,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/consultas/">LISTA DE CONSULTAS</a>
                     </li>
-<<<<<<< HEAD
                     <li class="nav-item">
                         <a class="nav-link" href="/resgitrar/">REGISTRAR</a>
                     </li>
                 </ul>
                 <span class="navbar-text">
                     <a class="nav-link active" aria-current="page" href="/logout/"><img
-=======
-                </ul>
-                <span class="navbar-text">
-                    <a class="nav-link active" aria-current="page" href="/index/"><img
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
                             src="{% static 'img/salida.png' %}" width="40px">
                     </a>
                 </span>
@@ -122,11 +96,7 @@
                         <div class="col-0 col-xl-3 col-md-1">
                         </div>
                         <div class="col-10 col-xl-5 col-md-6 col-sm-10 my-3 text-start">
-<<<<<<< HEAD
                             <form action="" method="POST" enctype="multipart/form-data" id="ingresar_curso">
-=======
-                            <form action="/ingresar_cursos_form/" method="POST" enctype="multipart/form-data">
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
                                 {%csrf_token %}
                                 <h4 class="text-center">Ingresar Cursos</h4>
                                 <div class="cursos-add-box">
@@ -141,11 +111,7 @@
                                         {% endif %}
                                 </div>
                                 <div class="cursos-add-box">
-<<<<<<< HEAD
                                     <label for="">Imagen:</label>
-=======
-                                    <label for="">Imagenes:</label>
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
                                     <input class="form-control form-control-sm" id="img_curso" type="file"
                                         name="img_curso" required>
                                         {% if form_addcurso.img_curso.errors %}
@@ -188,7 +154,6 @@
                                         {% endif %}
                                 </div>
                                 <div class="cursos-add-box">
-<<<<<<< HEAD
                                     <label for="">Requisitos de aprobación:</label>
                                     <input class="form-control form-control-sm" type="text" placeholder="Requisistos" required
                                         aria-label=".form-control-sm example" name="requisitos_curso" value="{{form_addcurso.requisitos_curso.value}}">
@@ -197,11 +162,6 @@
                                             {{form_addcurso.requisitos_curso.errors}}
                                           </div>
                                         {% endif %}
-=======
-                                    <label for="">Requisistos:</label>
-                                    <input class="form-control form-control-sm" type="text" placeholder="Requisistos"
-                                        aria-label=".form-control-sm example" name="requisitos_curso">
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
                                 </div>
                                 <div class="cursos-add-box">
                                     <label for="">Fecha de inicio de postulación:</label>
@@ -238,7 +198,6 @@
                                             data-bs-target="#add_hospital"><img src="{% static 'img/mas.png' %}"
                                                 height="15px">
                                         </button>
-<<<<<<< HEAD
                                         
                                     </div>
                                     {% if form_addcurso.hospital_curso.errors %}
@@ -246,9 +205,6 @@
                                             {{form_addcurso.hospital_curso.errors}}
                                           </div>
                                         {% endif %}
-=======
-                                    </div>
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
                                 </div>
                                 <div class="cursos-add-box">
                                     <label for="">Servicios dirigidos:</label>
@@ -264,10 +220,7 @@
                                             data-bs-target="#add_servicio"><img src="{% static 'img/mas.png' %}"
                                                 height="15px">
                                         </button>
-<<<<<<< HEAD
                                         
-=======
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
                                     </div>
                                     {% if form_addcurso.servicio_curso.errors %}
                                         <div class="alert alert-warning alert-bg " role="alert" style="height: 60px;">
@@ -322,346 +275,13 @@
                                         {% endif %}
                                 </div>
                                 <div class="container text-center mb-5"><br>
-<<<<<<< HEAD
                                     <button class="btn btn-primary" type="submit" form="ingresar_curso" id="curso_ingresado" name="curso_ingresado">Enviar</button>
                                 </div>
                             </form>
-=======
-                                    <button class="btn btn-primary">Enviar</button>
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="Lista_cursos" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-                <div class="container text-center">
-                    <h3 class="my-3 fw-bold">Lista de cursos ingresados</h3>
-                    <div class="container text-center">
-                        <form action="/busqueda_curso_operador/" method="POST" id="buscar_curso_operador">
-                            {% csrf_token %}
-                            <div class="input-group text-center">
-                                <label class="input-group-text">Busquar Curso</label>
-                                <input type="text" name="busqueda_curso_operador" id="busqueda_curso_operador"
-                                    class="form-control">
-                                <button class="btn btn-warning" type="submit" form="buscar_curso_operador"><img
-                                        src="{% static 'img/busqueda2.png' %}" height="15px"></button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="table-responsive my-5">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col"></th>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">Hospital</th>
-                                    <th scope="col">Servicio</th>
-                                    <th scope="col">Personal</th>
-                                    <th scope="col">Editar</th>
-                                    <th scope="col">Eliminar</th>
-                                    <th scope="col">Activo</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for list_cursos in cursos %}
-                                <tr>
-                                    <th scope="row">{{list_cursos.id}}</th>
-                                    <td>{{list_cursos.nombre_curso | truncatechars:10}}</td>
-                                    <td>{{list_cursos.hospital_curso | truncatechars:10}}</td>
-                                    <td>{{list_cursos.servicio_curso | truncatechars:10}}</td>
-                                    <td class="text-start">
-                                        <ul class="list-unstyled">
-                                            {% for x in list_cursos.personal_cursos.split %}
-                                            <li>{{x}}</li>
-                                            {% endfor %}
-                                        </ul>
-                                    </td>
-                                    <td class="align-items-center">
-                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                            data-bs-target="#Modal_curos_{{list_cursos.id}}">
-                                            <img src="{% static 'img/editar.png' %}" width="20px">
-                                        </button>
-                                    </td>
-                                    <td class="align-items-center">
-                                        <form action="/delete_curso/" method="POST">
-                                            {% csrf_token %}
-                                            <input type="hidden" value="{{list_cursos.id}}" name="id_delete_curso">
-                                            <button type="submit" class="btn btn-danger">
-                                                <img src="{% static 'img/basura.png' %}" width="20px">
-                                            </button>
-                                        </form>
-                                    </td>
-                                    <td class="switch">
-                                        <div class="form-check form-switch d-flex align-items-center">
-                                            <input class=" form-check-input bg-dark" type="checkbox" role="switch"
-                                                id="flexSwitchCheckDefault">
-                                            <label class="form-check-label ms-2" for="flexSwitchCheckDefault">Mostrar
-                                                curso</label>
-                                        </div>
-                                    </td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                    {% for list_cursos in cursos %}
-                    <!-- Modal -->
-                    <div class="modal fade" id="Modal_curos_{{list_cursos.id}}" tabindex="-1"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-xl">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Curso N°{{list_cursos.id}}</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="/actualizar_curso/" method="POST" id="actualizar_curso">
-                                        {% csrf_token %}
-                                        <input type="hidden" value="{{list_cursos.id}}" id="curso_actualizar"
-                                            name="curso_actualizar">
-                                        <div class="container text-center ">
-                                            <div class="row justify-content-center  align-items-center ">
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-6">
-                                                    <div class="container text-center">
-                                                        <div class="row">
-                                                            <div class="col-4 text-start">
-                                                                <h6>Titulo :</h6>
-                                                            </div>
-                                                            <div class="col-8 text-start">
-                                                                <input class="form-control" type="text"
-                                                                    style="width: 350px;" id="nombre_curso"
-                                                                    name="nombre_curso"
-                                                                    value="{{list_cursos.nombre_curso}}">
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-4 text-start">
-                                                                <h6>Descripcion precentación :</h6>
-                                                            </div>
-                                                            <div class="col-8 text-start"><textarea class="form-control"
-                                                                    type="text" id="descrip_corta_curso"
-                                                                    name="descrip_corta_curso"
-                                                                    style="width: 350px; height: 150px;">{{list_cursos.descrip_corta_curso}}</textarea>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-4 text-start">
-                                                                <h6>Descripcion Completa :</h6>
-                                                            </div>
-                                                            <div class="col-8 text-start"><textarea class="form-control"
-                                                                    type="text" id="descrip_larga_curso"
-                                                                    name="descrip_larga_curso"
-                                                                    style="width: 350px; height: 150px;">{{list_cursos.descrip_larga_curso}}</textarea>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row ">
-                                                            <div class="col-4 text-start"><label
-                                                                    class="form-label">Requisistos :</label></div>
-                                                            <div class="col-8 text-start"><input class="form-control"
-                                                                    type="text" style="width: 350px;"
-                                                                    id="requisitos_curso" name="requisitos_curso"
-                                                                    value="{{list_cursos.requisitos_curso}}"></div>
-                                                        </div>
-                                                        <div class="row ">
-                                                            <div class="col-4 text-start">
-                                                                <h6>Hospital :</h6>
-                                                            </div>
-                                                            <div class="col-8 text-start">
-                                                                <select name="hospital_curso" id="hospital_curso"
-                                                                    class="form-select">
-                                                                    <option value="{{list_cursos.hospital_curso}}"
-                                                                        selected>
-                                                                        {{list_cursos.hospital_curso}} --
-                                                                        (Actual)</option>
-                                                                    {%for class_hosp in class_hospital %}
-                                                                    <option value="{{class_hosp.nombre_hospital}}">
-                                                                        {{class_hosp.nombre_hospital}}</option>
-                                                                    {% endfor %}
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row ">
-                                                            <div class="col-4 text-start">
-                                                                <h6>Servicio :</h6>
-                                                            </div>
-                                                            <div class="col-8 text-start">
-                                                                <select name="servicio_curso" id="servicio_curso"
-                                                                    class="form-select">
-                                                                    <option value="{{list_cursos.servicio_curso}}"
-                                                                        selected>
-                                                                        {{list_cursos.servicio_curso}} --
-                                                                        (Actual)</option>
-                                                                    {%for class_serv in class_serv %}
-                                                                    <option value="{{class_serv.nombre_sev}}">
-                                                                        {{class_serv.nombre_sev}}</option>
-                                                                    {% endfor %}
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-4 text-start">
-                                                                <h6>Inicia :</h6>
-                                                            </div>
-                                                            <div class="col-8 text-start"><input name="time_start_curso"
-                                                                    id="time_start_curso" name="time_start_curso"
-                                                                    class="form-control" type="date"
-                                                                    aria-labelledby="helpertimestart"
-                                                                    value="`{{list_cursos.time_start_curso|date:'d-m-Y'}}`">
-                                                                <span id="helpertimestart" class="form-text">Fecha
-                                                                    inicio
-                                                                    ingresada
-                                                                    :{{list_cursos.time_start_curso|date:'d-m-Y'}}</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-4 text-start ">
-                                                                <h6>Finaliza :</h6>
-                                                            </div>
-                                                            <div class="col-8 text-start"><input class="form-control"
-                                                                    type="date" aria-labelledby="helpertimeend"
-                                                                    id="time_end_curso" name="time_end_curso"
-                                                                    value="{{list_cursos.time_end_curso|date:'d M, Y'}}">
-                                                                <span id="helpertimeend" class="form-text">Fecha termino
-                                                                    ingresada
-                                                                    :{{list_cursos.time_end_curso|date:"d b, Y"}}</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-4 text-start">
-                                                                <h6>Personal Dirigido :</h6>
-                                                            </div>
-                                                            <div class="col-8 text-start">
-                                                                <div>
-                                                                    <div
-                                                                        class="form-check form-check-inline text-start">
-                                                                        <div>
-                                                                            <input class="form-check-input"
-                                                                                type="checkbox" id="inlineCheckbox1"
-                                                                                value="Administrativo"
-                                                                                name="personal_cursos">
-                                                                            <label class="form-check-label"
-                                                                                for="inlineCheckbox1">Personal
-                                                                                administrativo</label>
-                                                                        </div>
-                                                                        <div>
-                                                                            <input class="form-check-input"
-                                                                                type="checkbox" id="inlineCheckbox2"
-                                                                                value="Secretaria"
-                                                                                name="personal_cursos">
-                                                                            <label class="form-check-label"
-                                                                                for="inlineCheckbox1">Secretaria</label>
-                                                                        </div>
-                                                                        <div>
-                                                                            <input class="form-check-input"
-                                                                                type="checkbox" id="inlineCheckbox3"
-                                                                                value="Medicos" name="personal_cursos">
-                                                                            <label class="form-check-label"
-                                                                                for="inlineCheckbox1">Medicos</label>
-                                                                        </div>
-                                                                        <div>
-                                                                            <input class="form-check-input"
-                                                                                type="checkbox" id="inlineCheckbox4"
-                                                                                value="Enfermero/a"
-                                                                                name="personal_cursos">
-                                                                            <label class="form-check-label"
-                                                                                for="inlineCheckbox1">Enfermero/a</label>
-                                                                        </div>
-                                                                        <div>
-                                                                            <input class="form-check-input"
-                                                                                type="checkbox" id="inlineCheckbox5"
-                                                                                value="Auxiliares"
-                                                                                name="personal_cursos">
-                                                                            <label class="form-check-label"
-                                                                                for="inlineCheckbox1">Auxiliares</label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-5 ">
-                                                    <h4></h4>
-                                                    <h6>Imagen</h6>
-                                                    <img src="{{list_cursos.img_curso.url}}" width="350px"><br>
-                                                    <h6>Documento</h6>
-                                                    <a href="{{list_cursos.form_carga_curso}}"></a>
-                                                    <label for="">{{list_cursos.form_carga_curso}}</label>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" form="actualizar_curso"
-                                        class="btn btn-primary">Guardar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                    <!-- Modal falla de busqueda -->
-                    <div class="modal fade" id="fail" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Aviso Falla!!</h1>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="alert alert-danger" role="alert">
-                                        <div class="row">
-                                            <div class="col-2">
-                                                <img src="{% static 'img/multiplicar.png' %}" width="65px">
-                                            </div>
-                                            <div class="col" style="margin-top: 15px;">
-                                                <h6>No se encontro algun curso con el dato especificado!!!</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Modal falla de busqueda -->
-                    <div class="modal fade" id="delete_curso" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Curso Eliminado!!</h1>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="alert alert-danger" role="alert">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img src="{% static 'img/formulario_delete.png' %}" width="65px">
-                                            </div>
-                                            <div class="col text-start" style="margin-top: 15px;">
-                                                <h6>El cursos fue eliminado !!!</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                </div>
-                            </div>
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
-                        </div>
-                    </div>
-                </div>
-            </div>
-<<<<<<< HEAD
             <div class="tab-pane fade" id="Lista_cursos" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
                 <div class="container text-center">
                     <h3 class="my-3 fw-bold">Lista de cursos ingresados</h3>
@@ -1072,68 +692,10 @@
                                 </div>
                             </div>
                         </div>
-=======
-        </div>
-        <!-- Modal add hospital -->
-        <div class="modal fade" id="add_hospital" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Hospitales</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <nav>
-                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
-                                    data-bs-target="#Agregar" type="button" role="tab" aria-controls="home-tab-pane"
-                                    aria-selected="true">Agregar</button>
-                                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
-                                    data-bs-target="#Eliminar" type="button" role="tab" aria-controls="nav-profile"
-                                    aria-selected="false">Eliminar</button>
-                            </div>
-                        </nav>
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="Agregar" role="tabpanel"
-                                aria-labelledby="home-tab" tabindex="0">
-                                <div class="container">
-                                    <form action="/add_hospital/" method="POST">
-                                        {%csrf_token %}
-                                        <label for="" class="form-label">Ingrese el nombre del Hospital :</label>
-                                        <input type="text" class="form-control" name="nombre_hospital"
-                                            id="nombre_hospital">
-                                        <button type="submit" class="btn btn-warning">Enviar</button>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="Eliminar" role="tabpanel" aria-labelledby="nav-profile-tab"
-                                tabindex="0">
-                                <div class="container">
-                                    <form action="/delete_hospital/" method="POST">
-                                        {%csrf_token %}
-                                        <label for="" class="form-label">Selecion el Hospital para eliminar</label>
-                                        <select name="id_delete_hospital" id="id_delete_hospital" class="form-select">
-                                            <option selected disabled>Ver selecciones</option>
-                                            {%for class_hosp in class_hospital %}
-                                            <option value="{{class_hosp.id}}">
-                                                {{class_hosp.nombre_hospital}}</option>
-                                            {% endfor %}
-                                        </select>
-                                        <button type="submit" class="btn btn-danger">Eliminar</button>
-                                    </form>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
                     </div>
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
 
         <!-- Modal add hospital -->
         <div class="modal fade" id="add_hospital" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1141,36 +703,20 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">Hospitales</h1>
-=======
-        <!-- Modal add servicio -->
-        <div class="modal fade" id="add_servicio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Servicios</h1>
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
-<<<<<<< HEAD
                                     data-bs-target="#Agregar" type="button" role="tab" aria-controls="home-tab-pane"
                                     aria-selected="true">Agregar</button>
                                 <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
                                     data-bs-target="#Eliminar" type="button" role="tab" aria-controls="nav-profile"
-=======
-                                    data-bs-target="#Agregar2" type="button" role="tab" aria-controls="home-tab-pane"
-                                    aria-selected="true">Agregar</button>
-                                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
-                                    data-bs-target="#Eliminar2" type="button" role="tab" aria-controls="nav-profile"
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
                                     aria-selected="false">Eliminar</button>
                             </div>
                         </nav>
                         <div class="tab-content" id="myTabContent">
-<<<<<<< HEAD
                             <div class="tab-pane fade show active" id="Agregar" role="tabpanel"
                                 aria-labelledby="home-tab" tabindex="0">
                                 <div class="container">
@@ -1200,41 +746,11 @@
                                     </form>
                                 </div>
 
-=======
-                            <div class="tab-pane fade show active" id="Agregar2" role="tabpanel"
-                                aria-labelledby="home-tab" tabindex="0">
-                                <div class="container">
-                                    <form action="/add_servicio/" method="POST">
-                                        {%csrf_token %}
-                                        <label for="" class="form-label">Ingrese el nombre del Servicio :</label>
-                                        <input type="text" class="form-control" name="nombre_sev" id="nombre_sev">
-                                        <button type="submit" class="btn btn-warning">Enviar</button>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="Eliminar2" role="tabpanel" aria-labelledby="nav-profile-tab"
-                                tabindex="0">
-                                <div class="container">
-                                    <form action="/delete_servicio/" method="POST">
-                                        {%csrf_token %}
-                                        <label for="" class="form-label">Selecion el Servicio para eliminar</label>
-                                        <select name="servicio_curso" id="servicio_curso" class="form-select">
-                                            <option selected disabled>Ver selecciones</option>
-                                            {%for class_serv in class_serv %}
-                                            <option value="{{class_serv.id}}">
-                                                {{class_serv.nombre_sev}}</option>
-                                            {% endfor %}
-                                        </select>
-                                        <button class="btn btn-danger">Eliminar</button>
-                                    </form>
-                                </div>
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-<<<<<<< HEAD
                     </div>
                 </div>
             </div>
@@ -1292,17 +808,12 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-=======
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
                     </div>
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
 
         <!-- Modal  curso add-->
-=======
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
         <div class="modal fade" id="curso_add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -1322,7 +833,6 @@
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
-<<<<<<< HEAD
             </div>
         </div>
     </div>
@@ -1361,11 +871,6 @@
     </div>
 </div>
 
-=======
-            </div>
-        </div>
-    </div>
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
     <footer class="text-center bg-primary text-white">
         <section class="d-flex justify-content-center pb-3 border-bottom">
             <section class="mt-3">
@@ -1413,86 +918,10 @@
             <a class="text-reset fw-bold" href=" ">Servicio de Capacitacion a la Salud</a>
         </div>
     </footer>
-<<<<<<< HEAD
-=======
-    <!-- Modal -->
-    {% if curso_add %}
-    <script>
-        $(document).ready(function () {
-            const myModal = new bootstrap.Modal('#curso_add');
-            myModal.show();
-        });
-        console.log("mensaje enviado");
-    </script>
-    {%endif%}
-    {% if lista %}
-    <script>
-        $(document).ready(function () {
-            const bsTab = new bootstrap.Tab('#nav-profile-tab');
-            bsTab.show();
-        });
-    </script>
-    {% endif %}
-    <script>
-        function changeValue(newColor) {
-            var valor = document.getElementById('campo_precentacion').value;
-            document.getElementById('para_precentacion').innerHTML = valor;
-            var valor = document.getElementById('campo_hospital').value;
-            document.getElementById('para_hospital').innerHTML = valor;
-            var valor = document.getElementById('campo_nombre').value;
-            document.getElementById('para_nombre').innerHTML = valor;
-        }
-        function prueba(el) {
-            document.getElementById('para_end_time').innerHTML = el.value;
-        }
-        const defaultFile = "{% static 'img/no_img.jpg' %}"
 
-        const file = document.getElementById('img_curso');
-        const img = document.getElementById('mostrarImagen');
-        file.addEventListener('change', e => {
-            if (e.target.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    img.src = e.target.result;
-                }; reader.readAsDataURL(e.target.files[0])
-            } else { img.src = defaultFile }
-        })
-    </script>
-    <!-- Modal llamado -->
-    {% if fail %}
-    <script>
-        $(document).ready(function () {
-            const myModal = new bootstrap.Modal('#fail');
-            myModal.show();
-        });
-    </script>
-    {%endif%}
-    <!-- Modal llamado -->
-    {% if delete_curso %}
-    <script>
-        $(document).ready(function () {
-            const myModal = new bootstrap.Modal('#delete_curso');
-            myModal.show();
-        });
-    </script>
-    {%endif%}
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.js"></script>
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-
-<<<<<<< HEAD
     <!-- scripts -->
     
     <script>
@@ -1604,12 +1033,5 @@
         crossorigin="anonymous"></script>
 </body>
 
-=======
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-        crossorigin="anonymous"></script>
-</body>
-
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
 </html>
 {% endblock content %}

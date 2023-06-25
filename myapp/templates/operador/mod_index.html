@@ -8,12 +8,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
   <link rel="icon" alt="Logo" type="image/png" class="rounded-pill" href="{% static 'img/logo_salud.png' %}">
   <title>Operador/Mod_index</title>
-=======
-  <title>Document</title>
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
 
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
@@ -49,18 +45,12 @@
           <li class="nav-item">
             <a class="nav-link" href="/consultas/">LISTA DE CONSULTAS</a>
           </li>
-<<<<<<< HEAD
           <li class="nav-item">
             <a class="nav-link" href="/resgitrar/">REGISTRAR</a>
         </li>
         </ul>
         <span class="navbar-text">
           <a class="nav-link active" aria-current="page" href="/logout/"><img src="{% static 'img/salida.png' %}"
-=======
-        </ul>
-        <span class="navbar-text">
-          <a class="nav-link active" aria-current="page" href="/index/"><img src="{% static 'img/salida.png' %}"
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
               width="40px">
           </a>
         </span>
@@ -88,7 +78,6 @@
             <div class="col-4">
               <div class="container list_cartas">
                 <h4 class="my-3 fw-bold">Ingresar cartas de precentación</h4>
-<<<<<<< HEAD
                 <form action="" method="POST" enctype="multipart/form-data" id="ingresar_card_form">
                   {% csrf_token %}
                   <div class="my-1 text-start">
@@ -133,31 +122,6 @@
                   </div>
                   <div class="text-start mt-5 my-1 text-center">
                     <button class="btn btn-primary" type="submit" form="ingresar_card_form" id="ingresar_card" name="ingresar_card">Enviar</button>
-=======
-                <form action="/ingresar_card_form/" method="POST" enctype="multipart/form-data">
-                  {% csrf_token %}
-                  <div class="my-1 text-start">
-                    <label class="my-1" for="">Imagen : </label>
-                    <input class="form-control form-control-sm" id="formFileSm" type="file" name="img_card">
-                  </div>
-                  <div class="my-1 text-start">
-                    <label class="my-1" for="">Nombre : </label>
-                    <input class="form-control form-control-sm" type="text" placeholder="Nombre"
-                      aria-label=".form-control-sm example" name="nombre_card">
-                  </div>
-                  <div class="my-1 text-start">
-                    <label class="my-1" for="">Cargo : </label>
-                    <input class="form-control form-control-sm" type="text" placeholder="Cargo"
-                      aria-label=".form-control-sm example" name="cargo_card">
-                  </div>
-                  <div class="my-1 text-start">
-                    <label class="my-1" for="">Descripcion:</label>
-                    <input class="form-control form-control-sm" type="text" placeholder="Descripción"
-                      aria-label=".form-control-sm example" name="descrip_card">
-                  </div>
-                  <div class="text-start mt-5 my-1 text-center">
-                    <button class="btn btn-primary">Enviar</button>
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
                   </div>
                 </form>
               </div>

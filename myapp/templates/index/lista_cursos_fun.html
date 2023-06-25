@@ -8,10 +8,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
   <link rel="icon" alt="Logo" type="image/png" class="rounded-pill" href="{% static 'img/logo_salud.png' %}">
-=======
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
   <title>SERVICIO DE SALUD CONCEPCION</title>
 
   <!-- Font Awesome -->
@@ -22,7 +19,6 @@
   <link rel="stylesheet" href="{% static 'estilos/style.css' %}">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-<<<<<<< HEAD
   <!-- AJAX -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 </head>
@@ -141,113 +137,6 @@
 
 
 
-=======
-</head>
-
-<body>
-  <!--aca ira el logo con en nombre de la institucion que rotornara a la pagin principal-->
-  <!--aca estar la barra de navegacion para ver los cursos disponibles-->
-  <nav class=" navbar navbar-expand-sm navbar-light bg-primary">
-    <div class="container-fluid justify-content-center">
-      <a class="navbar-brand" href="/index/">
-        <img src="{% static 'img/logo_salud.png' %}" alt="Logo" style="width:70px;" class="rounded-pill">
-      </a>
-      <button class="navbar-toggler ms-auto" type="button" data-mdb-toggle="collapse"
-        data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <i class="fas fa-chevron-circle-down"></i>
-      </button>
-    </div>
-    <div class="container collapse navbar-collapse" id="mynavbar">
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item p-2">
-            <a class="nav-link" href="/index/">HOME</a>
-          </li>
-          <li class="nav-item p-2">
-            <a class="nav-link" href="/lista_cursos_fun/">CURSOS DISPONIBLES</a>
-          </li>
-          <li class="nav-item p-2">
-            <a class="nav-link" href="/consultas_cursos/">CONSULTA TUS CURSOS</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <div class="container-fluid text-center my-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-4 col-md-3">
-          <div class="text-center">
-            <h6>Filtro de búsqueda</h6>
-            <div class="form-nombre">
-              <form action="/filtro_nombre/" method="POST" class="text-start" id="filtro_cursos_nombre">
-                {% csrf_token %}
-                <label for="">Nombre curso :</label>
-                <div class="input-group">
-                  <input type="text" name="nombre_curso_buscar" id="nombre_curso_buscar" class="form-control">
-                  <button class="btn btn-warning" type="submit" id="filtro_cursos" form="filtro_cursos_nombre"><img
-                      class="img-busqueda" src="{% static 'img/busqueda2.png' %}"></button>
-                </div>
-              </form>
-            </div>
-            <div class="form-hospital">
-              <form action="/filtro_hospital/" method="POST" class="text-start" id="filtro_cursos_hospital">
-                {% csrf_token %}
-                <label class="form-label">Hospital :</label>
-                <div class="input-group">
-                  <select name="hospital_curso_buscar" id="hospital_curso_buscar" value=" " class="form-select">
-                    <option selected disabled>Ver selecciones</option>
-                    {%for class_hosp in class_hospital %}
-                    <option value="{{class_hosp.nombre_hospital}}">{{ class_hosp.nombre_hospital }}</option>
-                    {% endfor %}
-                  </select>
-                  <button class="btn btn-warning" type="submit" form="filtro_cursos_hospital" id="filtro_cursos"><img
-                      class="img-busqueda" src="{% static 'img/busqueda2.png' %}"></button>
-                </div>
-              </form>
-            </div>
-            <div class="form-servicio">
-              <form action="/filtro_servicio/" method="POST" class="text-start" id="filtro_cursos_servicio">
-                {% csrf_token %}
-                <label class="form-label">Servicio :</label>
-                <div class="input-group">
-                  <select name="servicio_curso_buscar" id="servicio_curso_buscar" value=" " class="form-select">
-                    <option selected disabled>Ver selecciones</option>
-                    {%for class_serv in class_serv %}
-                    <option value="{{class_serv.nombre_sev}}">{{ class_serv.nombre_sev }}</option>
-                    {% endfor %}
-                  </select>
-                  <button class="btn btn-warning" type="submit" form="filtro_cursos_servicio" id="filtro_cursos"><img
-                      class="img-busqueda" src="{% static 'img/busqueda2.png' %}"></button>
-                </div>
-              </form>
-            </div>
-            <div class="form-tiempo">
-              <form action="/filtro_time/" method="POST" class="text-start" id="filtro_cursos_time">
-                {% csrf_token %}
-                <label class="form-label">Próximo a finalzar :</label>
-                <div class="input-group">
-                  <select name="prox_end_curso_buscar" id="prox_end_curso_buscar" value=" " class="form-select">
-                    <option selected disabled>Ver selecciones</option>
-                    <option value="15">15 Días</option>
-                    <option value="10">10 Días</option>
-                    <option value="5">5 Días</option>
-                    <option value="3">3 Días</option>
-                  </select>
-                  <button class="btn btn-warning" type="submit" form="filtro_cursos_time" id="filtro_cursos"><img
-                      class="img-busqueda" src="{% static 'img/busqueda2.png' %}"></button>
-                </div>
-              </form>
-            </div>
-            <div class="form-personal">
-              <form action="/filtro_personal/" method="POST" class="text-start" id="filtro_cursos_personal">
-                {% csrf_token %}
-                <label for="">Personal :</label>
-                <div class="input-group">
-                  <input type="text" name="personal_curso_buscar" id="personal_curso_buscar" class="form-control">
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
                   <button class="btn btn-warning" type="submit" id="filtro_cursos" form="filtro_cursos_personal"><img
                       class="img-busqueda" src="{% static 'img/busqueda2.png' %}"></button>
                 </div>
@@ -263,13 +152,8 @@
                 <div class="card">
                   <img src="{{cursos.img_curso.url}}" class="card-img-top">
                   <div class="card-body card-body-list-cur">
-<<<<<<< HEAD
                     <h5 class="card-title card-title-cursos">{{ cursos.nombre_curso | truncatechars:30}}</h5>
                     <p class="card-text card-text-cursos">{{ cursos.descrip_corta_curso | truncatechars:40}}</p>
-=======
-                    <h5 class="card-title">{{ cursos.nombre_curso | truncatechars:10}}</h5>
-                    <p class="card-text">{{ cursos.descrip_corta_curso | truncatechars:30}}</p>
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
                     <ul class="list-group list-group-flush">
                       <li class="list-group-item">Hospital: {{ cursos.hospital_curso | truncatechars:14}}</li>
                       <li class="list-group-item">Finaliza: {{ cursos.time_end_curso }}</li>
@@ -372,7 +256,6 @@
                       <h6>Documento de Inscripcion:</h6>
                     </div>
                     <div class="col-8 text-start">
-<<<<<<< HEAD
                       <form action="" method="POST" id="descargar_form_{{cursos.id}}">
                         {%csrf_token%}
                         <input type="hidden" id="id_buscador" name="id_buscador" value="{{cursos.id}}">
@@ -381,11 +264,6 @@
                       </button>
                       </form>
                       
-=======
-                      <button class="btn btn-btn btn-dark text-white">
-                        <i class="fas fa-download"></i> Descargar
-                      </button>
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
                     </div>
                   </div>
                 </div>
@@ -430,10 +308,6 @@
     </div>
   </div>
   </div>
-<<<<<<< HEAD
-=======
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
   <footer class="container-fluid text-center bg-primary text-white">
     <section class="d-flex justify-content-center pb-3 border-bottom">
       <section class="mt-3">
@@ -475,7 +349,6 @@
       <a class="text-reset fw-bold" href=" ">Servicio de Capacitacion a la Salud</a>
     </div>
   </footer>
-<<<<<<< HEAD
 
   <!-- Modal llamado -->
   {% if fallafiltro %}
@@ -497,19 +370,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
 <!-- AJAX -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-=======
-
-  <!-- Modal llamado -->
-  {% if fallafiltro %}
-  <script>
-    $(document).ready(function () {
-      const myModal = new bootstrap.Modal('#ventanafalla');
-      myModal.show();
-    });
-    console.log("mensaje enviado");
-  </script>
-  {%endif%}
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.js"></script>
 

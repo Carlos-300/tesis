@@ -3,7 +3,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-<<<<<<< HEAD
 .favicon {
     border-radius: 50%;
   }
@@ -25,11 +24,6 @@
 .alert{
     height: 60px;
 }
-=======
-
-
-
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
 /* navbar */
 .navbar {
     display: flex;
@@ -41,11 +35,7 @@
 }
 
 .nav-link {
-<<<<<<< HEAD
     color: black !important;
-=======
-    color: white !important;
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
     font-weight: 500 !important;
 }
 
@@ -54,7 +44,6 @@
 }
 
 .fas {
-<<<<<<< HEAD
     color: black !important;
 }
 
@@ -63,13 +52,6 @@
 .carousel-caption{
     background-color: rgb(0, 0, 0, .4);
 }
-=======
-    color: white !important;
-}
-
-
-
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
 
 
 
@@ -151,16 +133,12 @@ cursos disponibles */
     height: 250px !important;
     /* Ajusta la altura deseada */
 }
-<<<<<<< HEAD
 .card-title-cursos{
     height:55px !important;
 }
 .card-text-cursos{
     height:70px !important;
 }
-=======
-
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
 .description-scroll {
     word-wrap: break-word;
 }
@@ -173,12 +151,9 @@ cursos disponibles */
 
 .cursos-add-box {
     margin: 15px 0 15px 0;
-<<<<<<< HEAD
 }
 
 /* avisos */
 .img-aviso-estado{
     margin: 16px;
-=======
->>>>>>> bf235b7256cd8d2c5767d4d7bb604778dd3537ce
 }

@@ -18,7 +18,7 @@ class estado_curso(forms.Form):
     bool_estado_post = forms.CharField(max_length=6)
 
 class delete_user_form(forms.Form):
-    id_delete_user = forms.CharField(max_length=10)
+    usuario_eliminado = forms.CharField(max_length=10)
 
 class form_descarga_postulacion(forms.Form):
     id_buscador =  forms.CharField(max_length=10)
@@ -385,7 +385,7 @@ class CreateNewConsulta(forms.ModelForm):
 
 class update_curso(forms.Form):
     curso_actualizar = forms.CharField(max_length=100)
-    nombre_curso = forms.CharField(max_length=100)
+    nombre_curso_up = forms.CharField(max_length=100)
     descrip_corta_curso = forms.CharField(max_length=250)
     img_curso_up = forms.ImageField(required=False)
     doc_curso_up = forms.FileField(required=False ) 
@@ -421,8 +421,9 @@ class update_curso(forms.Form):
         return uploaded_image
 
 
-    def clean_nombre_curso(self):
-        nombre = self.cleaned_data.get("nombre_curso",  False)
+    def clean_nombre_curso_up(self):
+        nombre = self.cleaned_data.get("nombre_curso_up",  False)
+        print(nombre)
         if not nombre:
             raise ValidationError("Tiene que ingresar su nombre")
         if len(nombre) >= 71:
@@ -586,7 +587,6 @@ class UsuarioRegistroForm(UserCreationForm):
     email = forms.EmailField(max_length=100)
     celular = forms.IntegerField()
     nombres = forms.CharField(max_length=70)
-    username = forms.CharField(max_length=70)
 
     class Meta:
         model = Usuario
@@ -630,14 +630,16 @@ class LoginForm(forms.Form):
     password = forms.CharField(max_length=100)
 
 
-class Update_user(forms.ModelForm):
+class Update_user(forms.Form):
+    id_update_user = forms.CharField(max_length=10)
+    email = forms.EmailField(max_length=100)
+    celular = forms.IntegerField()
+    nombres = forms.CharField(max_length=70)
     password = forms.CharField(max_length=100, required=False, widget=forms.PasswordInput)
-    class Meta:
-        model = Usuario
-        fields = ['username', 'password']
+    username = forms.CharField(max_length=70)
     
     def clean_nombres(self):
-        nombre_completo = self.cleaned_data.get("nombre_completo",  False)
+        nombre_completo = self.cleaned_data.get("nombres",  False)
         if not nombre_completo:
             raise ValidationError("Por favor ingrese un nombre")
         if len(nombre_completo)>= 31:

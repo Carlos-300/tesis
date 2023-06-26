@@ -16,8 +16,6 @@ urlpatterns = [
     path('consultas_cursos/',views.form_consulta),
     path('resgitrar/',views.registrar, name='personal'),
     path('logout/',views.logout_view, name='logout' ),
-    path('delete/<int:pk>/', views.UsuarioDeleteView.as_view(), name='usuario_delete'),
-    path('update/<int:pk>/', views.UserUpdateView.as_view(), name='usuario_update'),
     path('login/', views.CustomLoginView.as_view(), name='login'),
     path('<path:route>/', views.pagina_no_encontrada, name='pagina_no_encontrada'),
 

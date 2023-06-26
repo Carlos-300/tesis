@@ -1,12 +1,13 @@
 import os
 import shutil
 import datetime
-from django.http import FileResponse
+from django.http import FileResponse, HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.generic import DeleteView, UpdateView 
 from django.contrib.auth.views import  LoginView
 from django.contrib.sessions.models import Session
+from urllib.parse import urlencode
 from django.db.models import Q
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
@@ -38,7 +39,9 @@ from .forms import (CreateNewCursos,
                     UsuarioRegistroForm,
                     LoginForm,
                     form_descarga_postulacion,
-                    Update_user,estado_curso)
+                    delete_user_form,
+                    Update_user,
+                    estado_curso)
 
 from .models import (create_nuevo_curso,
                      create_nuevo_card,
@@ -256,9 +259,11 @@ def ingresar_cursos(request):
             if form2.is_valid():
                 id_curso = request.POST['curso_actualizar']
                 cursos_encontrado = create_nuevo_curso.objects.get(id=id_curso)
-                if 'nombre_curso' in request.FILES:
-                    cursos_encontrado.nombre_curso = request.POST['nombre_curso']
+               
                 
+                text = request.POST['nombre_curso_up']
+                cursos_encontrado.nombre_curso = text
+
                 if 'img_curso_up' in request.FILES:
                     img_curso_up= request.FILES.get('img_curso_up')
                     instance = cursos_encontrado.img_curso.url
@@ -305,9 +310,10 @@ def ingresar_cursos(request):
                 
                 cursos_encontrado.save()
             
-                return render(request, "operador/cursos_add.html", {"cursos": cursos, "form2" : form2 ,"curso_add": True, "class_hospital": class_hospital, "class_serv": class_serv})
+                return render(request, "operador/cursos_add.html", {"cursos": cursos, "form2" : form2 ,"curso_mod": True, "class_hospital": class_hospital, "class_serv": class_serv,"lista":True
+                })
             else:
-                return render(request, "operador/cursos_add.html", {"cursos": cursos, "form_curso_up" : form2 , "class_hospital": class_hospital, "class_serv": class_serv})
+                return render(request, "operador/cursos_add.html", {"cursos": cursos, "form_curso_up" : form2 , "class_hospital": class_hospital, "class_serv": class_serv ,"lista":True})
 
         
         #Eliminar Curso
@@ -327,7 +333,7 @@ def ingresar_cursos(request):
 
                 return render(request, 'operador/cursos_add.html', {"del_curso": True, "cursos": cursos,"lista":True , "class_hospital": class_hospital, "class_serv": class_serv})
             else:
-                return render(request, 'operador/cursos_add.html', {"del_curso": True, "cursos": cursos,"lista":True , "class_hospital": class_hospital, "class_serv": class_serv , "form_delete":form3})
+                return render(request, 'operador/cursos_add.html', {"cursos": cursos,"lista":True , "class_hospital": class_hospital, "class_serv": class_serv , "form_delete":form3})
 
         if 'curso_buscador' in request.POST:
             #Busqueda de cursos
@@ -417,7 +423,7 @@ def ingresar_cursos(request):
 @login_required(login_url='login')
 def lista_consultas_operador(request):
     consultas = create_new_consultas.objects.all().order_by('id')
-    consulta_respuesta2 = create_new_consultas_respondidas.objects.all()
+    consulta_respuesta2 = create_new_consultas_respondidas.objects.all().order_by('id')
     if request.method == 'POST':
         #busqueda consultas
         if 'filtro_consulta' in request.POST:
@@ -444,7 +450,8 @@ def lista_consultas_operador(request):
                 try:
                     consulta_delete = create_new_consultas.objects.get(id=id_delete)
                     consulta_delete.delete()
-                    return render(request, 'operador/Lista_consultas_cursos.html', {"consultas": consultas, "consulta_respuesta2": consulta_respuesta2})
+                    instan_delete = "Eliminaste una consulta sin responder"
+                    return render(request, 'operador/Lista_consultas_cursos.html', {"consultas": consultas, "consulta_respuesta2": consulta_respuesta2,"instan_delete":instan_delete})
                 except:
                     return render(request, 'operador/Lista_consultas_cursos.html', {"consultas": consultas, "consulta_respuesta2": consulta_respuesta2})
             else:
@@ -465,7 +472,8 @@ def lista_consultas_operador(request):
                 consulta_respuesta.fecha_respuesta = datetime.datetime.now()
                 consulta_respuesta.save()
                 consulta.delete()
-                return render(request, 'operador/Lista_consultas_cursos.html', {"consultas": consultas, "consulta_respuesta2": consulta_respuesta2})
+                agregado_acept= "Se respondio la consulta de "+consulta_respuesta.nombre_completo +" "
+                return render(request, 'operador/Lista_consultas_cursos.html', {"consultas": consultas, "consulta_respuesta2": consulta_respuesta2 ,"agregado_acept" : agregado_acept})
             else:
                 return render(request, 'operador/Lista_consultas_cursos.html', {"consultas": consultas, "consulta_respuesta2": consulta_respuesta2})
             
@@ -485,8 +493,8 @@ def lista_consultas_operador(request):
                     print(consulta_respuesta2.exists())
                     if consulta_respuesta2.exists() == False:
                         consulta_respuesta = create_new_consultas_respondidas.objects.all()
-                        return render(request, 'operador/Lista_consultas_cursos.html', {"consultas": consultas, "consulta_respuesta2": consulta_respuesta, "respuesta": True, "fallafiltroconsultas": True})
-                return render(request, 'operador/Lista_consultas_cursos.html', {"consultas": consultas, "consulta_respuesta2": consulta_respuesta2, "respuesta": True})
+                        return render(request, 'operador/Lista_consultas_cursos.html', {"consultas": consultas, "consulta_respuesta2": consulta_respuesta, "lista": True, "fallafiltroconsultas": True})
+                return render(request, 'operador/Lista_consultas_cursos.html', {"consultas": consultas, "consulta_respuesta2": consulta_respuesta2, "lista": True})
 
         #eliminar_respondidas
         if 'delete_respondidas' in request.POST:
@@ -497,11 +505,12 @@ def lista_consultas_operador(request):
                     consulta_delete = create_new_consultas_respondidas.objects.get(
                         id=id_delete)
                     consulta_delete.delete()
-                    return render(request, 'operador/Lista_consultas_cursos.html', {"respuesta": True,"consultas": consultas, "consulta_respuesta2": consulta_respuesta2})
+                    instan_delete = "Consulta Respondidad elimnada"
+                    return render(request, 'operador/Lista_consultas_cursos.html', {"consultas": consultas, "consulta_respuesta2": consulta_respuesta2,"instan_delete":instan_delete , "lista":True})
                 except:
-                    return render(request, 'operador/Lista_consultas_cursos.html', {"respuesta": True,"consultas": consultas, "consulta_respuesta2": consulta_respuesta2})
+                    return render(request, 'operador/Lista_consultas_cursos.html', {"consultas": consultas, "consulta_respuesta2": consulta_respuesta2 ,"instan_delete":instan_delete , "lista":True})
             else:
-                return render(request, 'operador/Lista_consultas_cursos.html', {"respuesta": True,"consultas": consultas, "consulta_respuesta2": consulta_respuesta2})
+                return render(request, 'operador/Lista_consultas_cursos.html', {"consultas": consultas, "consulta_respuesta2": consulta_respuesta2 , "lista":True})
 
     else:
 
@@ -527,7 +536,8 @@ def modificar_index(request):
                 model_card.cargo_card = request.POST['cargo_card']
                 model_card.descrip_card = request.POST['descrip_card']
                 model_card.save()
-                return render(request, 'operador/mod_index.html', {"perfil_card": perfil_card, "publicidad": publicidad,"cursos": cursos ,"card_add": True})
+                text_acept = "La Carta de presentación fue agregada correctamente"
+                return render(request, 'operador/mod_index.html', {"perfil_card": perfil_card, "publicidad": publicidad,"cursos": cursos ,"agregado_acept": text_acept,"hola":True})
             else:
                 return render(request, "operador/mod_index.html", {"form_card" : form, "perfil_card": perfil_card, "publicidad": publicidad,"cursos": cursos})
             
@@ -540,7 +550,8 @@ def modificar_index(request):
                     if os.path.isfile("myapp"+instance.img_card.url) == True:
                         os.remove("myapp"+instance.img_card.url)
                     instance.delete()
-                    return render(request, 'operador/mod_index.html', {"perfil_card": perfil_card, "publicidad": publicidad ,"cursos": cursos})
+                    instan_delete = "El Perfil fue borrado correctamente" 
+                    return render(request, 'operador/mod_index.html', {"perfil_card": perfil_card, "publicidad": publicidad ,"cursos": cursos ,"instan_delete":instan_delete})
                 except:
                     return render(request, 'operador/mod_index.html', {"perfil_card": perfil_card, "publicidad": publicidad ,"cursos": cursos})
             else:
@@ -554,9 +565,10 @@ def modificar_index(request):
                 model_pub.nombre_pub = request.POST['nombre_pub']
                 model_pub.descrip_pub = request.POST['descrip_pub']
                 model_pub.save()
-                return render(request, 'operador/mod_index.html', {"perfil_card": perfil_card, "publicidad": publicidad, 'ventana_public': True, "public_add": True ,"cursos": cursos})
+                text_acept = "La publicación fue agregada correctamente"
+                return render(request, 'operador/mod_index.html', {"perfil_card": perfil_card, "publicidad": publicidad, "agregado_acept": text_acept,"cursos": cursos ,"lista":True})
             else:
-                return render(request, 'operador/mod_index.html', {"form_public" : form,"perfil_card": perfil_card, "publicidad": publicidad, 'ventana_public': True ,"cursos": cursos})
+                return render(request, 'operador/mod_index.html', {"form_public" : form,"perfil_card": perfil_card, "publicidad": publicidad,"cursos": cursos})
 
         if 'curso_public' in request.POST:  
             form = validar_curso_publicar(request.POST)
@@ -578,25 +590,27 @@ def modificar_index(request):
                 model_pub.descrip_pub = "Finaliza el " + \
                     cursos_2.time_end_curso.strftime("%d-%B-%Y")
                 model_pub.save()
-                return render(request, 'operador/mod_index.html', {"perfil_card": perfil_card, "publicidad": publicidad, "cursos": cursos, 'ventana_public': True}) 
+                text_acept = "La publicación del curso fue agregada correctamente"
+                return render(request, 'operador/mod_index.html', {"perfil_card": perfil_card, "publicidad": publicidad, "cursos": cursos, "agregado_acept": text_acept ,"lista":True }) 
             else:
-                return render(request, 'operador/mod_index.html', {"perfil_card": perfil_card, "publicidad": publicidad, "cursos": cursos, 'ventana_public': True}) 
+                return render(request, 'operador/mod_index.html', {"perfil_card": perfil_card, "publicidad": publicidad, "cursos": cursos}) 
              
         if 'public_delete' in request.POST:
             form = validar_delete_public(request.POST)
             if form.is_valid():
                 id_public = request.POST['id_delete_public']
-                print(id_public)
+                
                 try:
                     instance = create_nuevo_publicacion.objects.get(id=id_public)
                     if os.path.isfile("myapp"+instance.img_pub.url) == True:
                         os.remove("myapp"+instance.img_pub.url)
                     instance.delete()
-                    return render(request, 'operador/mod_index.html', {"perfil_card": perfil_card, "publicidad": publicidad, 'ventana_public_delete': True , "cursos": cursos ,'ventana_public': True})
+                    instan_delete = "La Publicación fue borrado correctamente"
+                    return render(request, 'operador/mod_index.html', {"perfil_card": perfil_card, "publicidad": publicidad, "instan_delete":instan_delete, "cursos": cursos ,"lista":True })
                 except:
-                    return render(request, 'operador/mod_index.html', {"perfil_card": perfil_card, "publicidad": publicidad, 'ventana_public_delete': True , "cursos": cursos ,'ventana_public': True})
+                    return render(request, 'operador/mod_index.html', {"perfil_card": perfil_card, "publicidad": publicidad, "cursos": cursos,"lista":True  })
             else:
-                return render(request, 'operador/mod_index.html', {"perfil_card": perfil_card, "publicidad": publicidad, 'ventana_public_delete': True , "cursos": cursos, 'ventana_public': True})
+                return render(request, 'operador/mod_index.html', {"perfil_card": perfil_card, "publicidad": publicidad,  "cursos": cursos})
 
         if 'card_update' in request.POST:
             form = update_card(request.POST , request.FILES)
@@ -618,12 +632,14 @@ def modificar_index(request):
                     else:
                         card.img_card = img_card_up
                 card.save()
-                return render(request, 'operador/mod_index.html', {"perfil_card": perfil_card, "publicidad": publicidad , "cursos": cursos})
+                modficacion = "El perfil fue actualizado"
+                return render(request, 'operador/mod_index.html', {"perfil_card": perfil_card, "publicidad": publicidad , "cursos": cursos, "modficacion":modficacion})
             else:
                 return render(request, 'operador/mod_index.html', {"form_card_up":form,"perfil_card": perfil_card, "publicidad": publicidad , "cursos": cursos})
             
         if 'public_update' in request.POST:
             form = update_publicacion(request.POST, request.FILES)
+            
             if form.is_valid():
                 id_update = request.POST['id_update_pub']
                 public = create_nuevo_publicacion.objects.get(id=id_update)
@@ -640,9 +656,10 @@ def modificar_index(request):
                     else:
                         public.img_pub = img_pub_up
                 public.save()
-                return render(request, 'operador/mod_index.html', {"perfil_card": perfil_card, "publicidad": publicidad , "cursos": cursos, 'ventana_public': True})
+                modficacion = "La publicación fue actualizada"
+                return render(request, 'operador/mod_index.html', {"perfil_card": perfil_card, "publicidad": publicidad , "cursos": cursos, "lista": True, "modficacion":modficacion})
             else:
-                return render(request, 'operador/mod_index.html', {"form_public_up":form,"perfil_card": perfil_card, "publicidad": publicidad , "cursos": cursos, 'ventana_public': True})
+                return render(request, 'operador/mod_index.html', {"form_public_up":form,"perfil_card": perfil_card, "publicidad": publicidad , "cursos": cursos, 'lista': True})
     else:
         return render(request, 'operador/mod_index.html', {"perfil_card": perfil_card, "publicidad": publicidad, "cursos": cursos})
     
@@ -666,51 +683,62 @@ def registrar(request):
         if 'create_user' in request.POST:
             form_create_user = UsuarioRegistroForm(request.POST)
             if form_create_user.is_valid():
-                form_create_user.save()
-                return render(request, "operador/personal.html" ,{"form_register":form_create_user ,"usuarios":usuarios})
+                usuario = form_create_user.save(commit=False)
+                usuario.celular = form_create_user.cleaned_data['celular']
+                usuario.nombres = form_create_user.cleaned_data['nombres']
+                usuario.username = form_create_user.cleaned_data['username']
+                usuario.email = form_create_user.cleaned_data['email']
+                password1 = form_create_user.cleaned_data['password1']
+                password2 = form_create_user.cleaned_data['password2']
+                if password1 == password2:
+                    usuario.set_password(password1)
+                    usuario.save()
+                    agregado_acept = "Usuario agregado correctamente"
+                else:
+                    form_create_user.add_error(None, "Contraseñas inválidas")
+                return render(request, "operador/personal.html" ,{"usuarios":usuarios, "agregado_acept":agregado_acept})
             else:
                 return render(request, "operador/personal.html" ,{"form_register":form_create_user ,"usuarios":usuarios})
             
-       
+        if 'delete_user' in request.POST:
+            form = delete_user_form(request.POST)
+            if form.is_valid():
+                id_delete = request.POST['usuario_eliminado']
+                userrs = Usuario.objects.get(id=id_delete)
+                userrs.delete()
+                instan_delete = "Usuario eliminado"
+                return render(request, "operador/personal.html" ,{"instan_delete":instan_delete,"lista":True,"usuarios":usuarios})
+            else:
+                return render(request, "operador/personal.html" ,{"usuarios":usuarios})
+            
+        if 'user_update' in request.POST:
+            form = Update_user(request.POST)
+            if form.is_valid():
+                id_update_user = request.POST['id_update_user']
+                userss = Usuario.objects.get(id=id_update_user)
+                if 'celular' in request.POST:
+                    userss.celular = form.cleaned_data['celular']
+                if 'nombres' in request.POST:
+                    userss.nombres = form.cleaned_data['nombres']
+                if 'username' in request.POST:
+                    username_form = form.cleaned_data['username']
+                    if username_form != userss.username:
+                        userss.username = username_form
+                if 'email' in request.POST:
+                    userss.email = form.cleaned_data['email']
+                if 'password' in request.POST:
+                    userss.set_password(form.cleaned_data['password'])
+                userss.save()
+                modificacion = "Usuario Modificado "
+                return render(request, "operador/personal.html" ,{"modificacion":modificacion,"lista":True,"usuarios":usuarios})
+            else:
+                return render(request, "operador/personal.html" ,{"form_update": form,"usuarios":usuarios})
+
+
     else:
-        return render(request, "operador/personal.html" ,{"form_register":form ,"usuarios":usuarios})
+        return render(request, "operador/personal.html" ,{"usuarios":usuarios})
 
 
-class UsuarioDeleteView(DeleteView):
-    model = Usuario
-    template_name = 'operador/delete_usuario.html'
-    success_url = reverse_lazy('/personal/')
-
-
-class UserUpdateView(UpdateView):
-    model = Usuario
-    form_class = Update_user
-    template_name = 'operador/update_usuario.html'
-
-    def dispatch(self,request,*args ,**kwargs):
-        self.object = self.get_object()
-        return super().dispatch(request, *args, **kwargs)
-    
-    def get(self, request):
-        if request.user.is_authenticated:
-            return redirect('/mod_index/')
-        form = self.form_class()
-        return render(request, self.template_name, {'form': form})
-
-    def post(self,request,*args,**kwargs):
-        form = self.get_form()
-        if form.is_valid():
-            user_update = self.get_object()
-            user_update.email = request.POST['email']
-            user_update.celular = request.POST['celular']
-            user_update.nombres = request.POST['nombres']
-            user_update.username = request.POST['username']
-            if 'user_password_up' in request.POST:
-                user_update.set_password(request.POST['password'])
-            user_update.save()
-            return redirect('personal')
-        else:
-            return redirect('personal')
 
 class CustomLoginView(LoginView):
     template_name = 'operador/log_op.html'
